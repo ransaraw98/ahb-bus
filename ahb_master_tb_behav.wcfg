@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ahb_master_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="ahb_master_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="68122887fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="127"></NameColumnWidth>
+      <ValueColumnWidth column_width="167"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hclk">
+      <obj_property name="ElementShortName">hclk</obj_property>
+      <obj_property name="ObjectShortName">hclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hresetn">
+      <obj_property name="ElementShortName">hresetn</obj_property>
+      <obj_property name="ObjectShortName">hresetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/dinb">
+      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/addr">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/wr">
+      <obj_property name="ElementShortName">wr</obj_property>
+      <obj_property name="ObjectShortName">wr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/hrdata">
+      <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hgrant">
+      <obj_property name="ElementShortName">hgrant</obj_property>
+      <obj_property name="ObjectShortName">hgrant</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/sel">
+      <obj_property name="ElementShortName">sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/haddr">
+      <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hwrite">
+      <obj_property name="ElementShortName">hwrite</obj_property>
+      <obj_property name="ObjectShortName">hwrite</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hready">
+      <obj_property name="ElementShortName">hready</obj_property>
+      <obj_property name="ObjectShortName">hready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/hwdata">
+      <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/dout">
+      <obj_property name="ElementShortName">dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/dut/hreq">
+      <obj_property name="ElementShortName">hreq</obj_property>
+      <obj_property name="ObjectShortName">hreq</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/state">
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/ahb_master_tb/dut/next_state">
+      <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/ahb_master_tb/hreq">
+      <obj_property name="ElementShortName">hreq</obj_property>
+      <obj_property name="ObjectShortName">hreq</obj_property>
+   </wvobject>
+</wave_config>
