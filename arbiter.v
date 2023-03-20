@@ -27,14 +27,17 @@ input hclk,
 input hresetn,
 input hreq_1,
 input hreq_2,
+input hreq_3,
 input [1:0] sel_1,
 input [1:0]sel_2,
+input [1:0]sel_3,
 input hready,
 input hready_out,   //signal from the selected slave
 input hresp,        //signal from the selected slave
 	
 output reg hgrant_1,
 output reg hgrant_2,
+output reg hgrant_3,
 output reg [1:0] sel
 
 
@@ -44,6 +47,7 @@ output reg [1:0] sel
 	parameter IDLE = 2'b00;
 	parameter GRANT1 = 2'b01;
 	parameter GRANT2 = 2'b10;
+	parameter GRANT3 = 2'b11;
 
 	reg [1:0]  state;
     reg [1:0]  next_state;
@@ -72,6 +76,10 @@ case(state)
 			begin
 			 next_state = GRANT2;
 			end
+		else if(hreq_2 == 1) // normal request only from master 2
+			begin
+			 next_state = GRANT3;
+			end
 		else 
 			begin
 			 next_state = IDLE;
@@ -91,6 +99,13 @@ case(state)
         else
             next_state = IDLE;
         end
+    GRANT3:begin
+        if(!tr_done) begin
+            next_state = GRANT3;
+        end
+        else
+            next_state = IDLE;
+        end    
     default:begin
             next_state = IDLE; 
     end
@@ -101,6 +116,7 @@ always @(posedge hclk, negedge hresetn) begin
 	if(!hresetn) begin
         hgrant_1 <= 0;
         hgrant_2 <= 0;
+        hgrant_3 <= 0;
         sel <= 2'b00;
         state <= IDLE;
         next_state <= IDLE;
@@ -110,6 +126,7 @@ always @(posedge hclk, negedge hresetn) begin
 		IDLE:begin
 			hgrant_1 <= 0;
 			hgrant_2 <= 0;
+			hgrant_3 <= 0;
 			sel <= 2'b00;
 		end	
 					
@@ -117,19 +134,25 @@ always @(posedge hclk, negedge hresetn) begin
 				
 			hgrant_1 <= 1;
 			hgrant_2 <= 0;
+			hgrant_3 <= 0;
 			sel <= sel_1; // goes to the address and write muxes
 				
 			//state <= (busy == 1'b1)?GRANT1:IDLE; // (some condition)?if_TRUE:if_FALSE Ternery operator
 			end
 		GRANT2:begin
-				
 			hgrant_1 <= 0;
 			hgrant_2 <= 1;
+			hgrant_3 <= 0;
 			sel <= sel_2;
-				
-				
 			//state <= (busy == 1'b1)?GRANT2:IDLE;
 			end
+		GRANT2:begin
+			hgrant_1 <= 0;
+			hgrant_2 <= 0;
+			hgrant_3 <= 1;
+			sel <= sel_3;
+			//state <= (busy == 1'b1)?GRANT2:IDLE;
+			end	
 	endcase 
 end 
 end
