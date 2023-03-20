@@ -50,7 +50,7 @@ output reg [1:0] sel
 	
     wire tr_done;
     
-    assign tr_done = (!hresp) && hready_out;
+    assign tr_done = (~hresp) && hready_out;
 
 always @(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin

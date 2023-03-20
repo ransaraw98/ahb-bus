@@ -42,16 +42,18 @@ module ahb_master(
 //----------------------------------------------------
 
 reg [2:0] state, next_state;
-parameter idle = 2'b00, /*await = 3'b001*/ s1 = 2'b01, s2 = 2'b10, s3 = 2'b11;
+parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011;
 
 
 //----------------------------------------------------
 // The state machine
 //----------------------------------------------------
 
-always @(posedge hclk, negedge hresetn) begin
+always@(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
     state <= idle;
+    hreq <=0;
+    next_state <= idle;
   end
   else begin
     state <= next_state;
@@ -59,14 +61,12 @@ always @(posedge hclk, negedge hresetn) begin
 end
 
 
-always @(*) begin
+always@(*) begin
   case(state)
     idle: begin
       if(enable == 1'b1) begin
-        hreq <= 1;
-        if((enable ==1'b1) && (hgrant==1'b1))
-            next_state = s1;
-      end
+        next_state = await;
+        end
       /*if(enable ==1)
         next_state =s1;
       */
@@ -74,22 +74,22 @@ always @(*) begin
         next_state = idle;
       end
     end
-    /*await: begin
-        if(hgrant == 1) begin
-            next_state = s1;    
-        end
-        else begin
-            next_state = await;
-        end
-    end */
+
+    await: begin
+        hreq = 1;
+        if(hgrant==1'b1)
+            next_state = s1;
+      end
+
     s1: begin
       if(wr == 1'b1) begin
         next_state = s2;
       end
-      else begin
+      else if(wr == 1'b0) begin
         next_state = s3;
       end
     end
+
     s2: begin
       if(enable == 1'b1) begin
         next_state = s1;
@@ -98,6 +98,7 @@ always @(*) begin
         next_state = idle;
       end
     end
+
     s3: begin
       if(enable == 1'b1) begin
         next_state = s1;
@@ -112,7 +113,7 @@ always @(*) begin
   endcase
 end
 
-always @(posedge hclk, negedge hresetn) begin
+always@(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
     sel <= 2'b00;
     haddr <= 32'h0000_0000;
