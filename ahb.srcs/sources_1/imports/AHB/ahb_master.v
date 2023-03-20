@@ -42,7 +42,7 @@ module ahb_master(
 //----------------------------------------------------
 
 reg [2:0] state, next_state;
-parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011;
+parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011, s4 = 3'b0100;
 
 
 //----------------------------------------------------
@@ -56,7 +56,7 @@ always@(posedge hclk, negedge hresetn) begin
     next_state <= idle;
   end
   else begin
-    state <= next_state;
+    state = next_state;
   end
 end
 
@@ -98,8 +98,10 @@ always@(*) begin
         next_state = idle;
       end
     end
-
-    s3: begin
+    s3:begin
+        next_state = s4;
+    end
+    s4: begin
       if(enable == 1'b1) begin
         next_state = s1;
       end
@@ -175,7 +177,16 @@ always@(posedge hclk, negedge hresetn) begin
         hburst <= 3'b000;
         hready <= 1'b1;
         hwdata <= hwdata;
-        dout <= hrdata;
+        dout = hrdata;
+      end
+      s4: begin 
+        sel <= sel;
+        haddr <= addr;
+        hwrite <= wr;
+        hburst <= 3'b000;
+        hready <= 1'b1;
+        hwdata <= hwdata;
+        dout = hrdata;
       end
       default: begin 
         sel <= slave_sel;
