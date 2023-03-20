@@ -13,8 +13,8 @@ module ahb_master(
   input hclk,
   input hresetn,
   input enable,
-  input [31:0] dina,
-  input [31:0] dinb,
+  input [31:0] din,
+  //input [31:0] dinb,
   input [31:0] addr,
   input wr,
   input hreadyout,
@@ -158,7 +158,7 @@ always@(posedge hclk, negedge hresetn) begin
         hwrite <= wr;
         hburst <= 3'b000;
         hready <= 1'b1;
-        hwdata <= dina+dinb;
+        hwdata <= din;
         dout <= dout;
       end
       s2: begin 
@@ -167,7 +167,7 @@ always@(posedge hclk, negedge hresetn) begin
         hwrite <= wr;
         hburst <= 3'b000;
         hready <= 1'b1;
-        hwdata <= dina+dinb;
+        hwdata <= din;
         dout <= dout;
       end
       s3: begin 

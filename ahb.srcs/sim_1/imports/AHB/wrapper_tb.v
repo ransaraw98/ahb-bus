@@ -25,8 +25,7 @@ module wrapper_tb(
     );
 reg clk;
 reg resetn;
-reg [31:0] dina1;
-reg [31:0] dinb1;
+reg [31:0] din;
 reg enable1;
 reg [1:0] slave_sel1;
 reg [31:0] addr1;
@@ -37,8 +36,7 @@ wire [31:0] dout1;
 design_1_wrapper uut ( 
     .addr1(addr1),
     .clk(clk),
-    .dina1(dina1),
-    .dinb1(dinb1),
+    .din(din),
     .dout1(dout1),
     .enable1(enable1),
     .resetn(resetn),
@@ -56,13 +54,12 @@ initial begin
 end
 
 
-task write( input [1:0] sel, input [31:0] address, input [31:0] a, input [31:0] b);
+task write( input [1:0] sel, input [31:0] address, input [31:0] a);
 begin
   @(posedge clk)
   slave_sel1 = sel;
   enable1 = 1'b1; 
-  dina1 = a;
-  dinb1 = b;
+  din = a;
   addr1 = address;
   wcontrol1 = 1'b1;
   #100;
@@ -88,8 +85,7 @@ endtask
 
 initial begin
   enable1 = 1'b0;
-  dina1 = 32'd0;
-  dinb1 = 32'd0;
+  din = 32'd0;
   addr1 = 32'd0;
   wcontrol1 = 1'b0;
   //hrdata = 32'd43;
@@ -112,14 +108,15 @@ initial begin
   read(2'b01, 32'd4);                   //read slave0 addr6
   read(2'b01, 32'd3);                   //read slave0 addr5
 */
-  write(2'b01, 32'd9, 32'd1, 32'd2);  //write slave1 addr 9 => 3
-  write(2'b10, 32'd6, 32'd44, 32'd132); //write slave1 addr 6 => 176
-  write(2'b01, 32'd5, 32'd4, 32'd132); //write slave1 addr 6 => 176
-  write(2'b01, 32'd4, 32'd14, 32'd132); //write slave1 addr 6 => 176
-  write(2'b01, 32'd3, 32'd24, 32'd132); //write slave1 addr 6 => 176
+  write(2'b01, 32'd9, 32'd1);  //write slave1 addr 9 => 3
+  write(2'b10, 32'd6, 32'd44); //write slave1 addr 6 => 176
+  write(2'b01, 32'd5, 32'd4); //write slave1 addr 6 => 176
+  write(2'b01, 32'd4, 32'd14); //write slave1 addr 6 => 176
+  write(2'b01, 32'd3, 32'd24); //write slave1 addr 6 => 176
   read(2'b01, 32'd9);                   //read slave2 addr8
   //write(2'b01, 32'd5, 32'd55, 32'd112); //write slave1 addr 5 => 136
   read(2'b10, 32'd6);                   //read slave0 add9
+  write(2'b10, 32'd1, 32'd433); //write slave1 addr 6 => 176
   read(2'b01, 32'd5);                   //read slave1 addr7
   read(2'b01, 32'd4);                   //read slave0 addr6
   read(2'b01, 32'd3);                   //read slave0 addr5
