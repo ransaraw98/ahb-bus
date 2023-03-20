@@ -187,6 +187,7 @@ always@(posedge hclk, negedge hresetn) begin
         hready <= 1'b1;
         hwdata <= hwdata;
         dout = hrdata;
+        hreq <=0;
       end
       default: begin 
         sel <= slave_sel;
