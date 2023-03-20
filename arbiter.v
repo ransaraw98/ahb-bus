@@ -66,33 +66,33 @@ case(state)
     IDLE:begin
         if(hreq_1 == 1) // normal request only from master 1
 			begin
-			 next_state <= GRANT1;
+			 next_state = GRANT1;
 			end
 		else if(hreq_2 == 1) // normal request only from master 2
 			begin
-			 next_state <= GRANT2;
+			 next_state = GRANT2;
 			end
 		else 
 			begin
-			 next_state <= IDLE;
+			 next_state = IDLE;
 			end
 		end  
 	GRANT1:begin
         if(!tr_done) begin
-            next_state <= GRANT1;
+            next_state = GRANT1;
         end
         else
-            next_state <= IDLE;
+            next_state = IDLE;
         end
     GRANT2:begin
         if(!tr_done) begin
-            next_state <= GRANT2;
+            next_state = GRANT2;
         end
         else
-            next_state <= IDLE;
+            next_state = IDLE;
         end
     default:begin
-            next_state <= IDLE; 
+            next_state = IDLE; 
     end
     endcase
 end
