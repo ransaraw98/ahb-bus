@@ -19,15 +19,15 @@ module multiplexor(
 
 always@(*) begin
   case(sel)
-    2'b00: begin
+    2'b01: begin
       hrdata = hrdata_1;
       hreadyout = hreadyout_1;
     end
-    2'b01: begin
+    2'b10: begin
       hrdata = hrdata_2;
       hreadyout = hreadyout_2;
     end
-    2'b10: begin
+    2'b11: begin
       hrdata = hrdata_3;
       hreadyout = hreadyout_3;
     end
