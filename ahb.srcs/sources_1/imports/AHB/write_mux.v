@@ -23,14 +23,19 @@
 module write_mux(
   input [31:0] haddr_1,
   input [31:0] haddr_2,
+  input [31:0] haddr_3,
   input [31:0] hwdata_1,
   input [31:0] hwdata_2,
+  input [31:0] hwdata_3,
   input hready_1,
   input hready_2,
+  input hready_3,
   input hgrant_1,
   input hgrant_2,
+  input hgrant_3,
   input hwrite_1,
   input hwrite_2,
+  input hwrite_3,
   output reg [31:0] haddr,
   output reg [31:0] hwdata,
   output reg hwrite,
@@ -53,6 +58,13 @@ always @(*) begin
             hready = hready_2;
             hwrite = hwrite_2;
         end
+    else if(hgrant_3 == 1)
+       begin
+            haddr = haddr_3;
+            hwdata = hwdata_3;
+            hready = hready_3;
+            hwrite = hwrite_3;
+        end    
     else        
         begin
             haddr = 32'h0000_0000;

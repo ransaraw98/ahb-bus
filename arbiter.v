@@ -68,15 +68,15 @@ end
 always@(*)begin
 case(state)
     IDLE:begin
-        if(hreq_1 == 1) // normal request only from master 1
+        if(hreq_1 == 1) 
 			begin
 			 next_state = GRANT1;
 			end
-		else if(hreq_2 == 1) // normal request only from master 2
+		else if(hreq_2 == 1) 
 			begin
 			 next_state = GRANT2;
 			end
-		else if(hreq_2 == 1) // normal request only from master 2
+		else if(hreq_3 == 1) 
 			begin
 			 next_state = GRANT3;
 			end

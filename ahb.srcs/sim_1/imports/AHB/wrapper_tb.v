@@ -27,16 +27,23 @@ reg clk;
 reg resetn;
 reg [31:0] din1;
 reg [31:0] din2;
+reg [31:0] din3;
 reg enable1;
 reg enable2;
+reg enable3;
 reg [1:0] slave_sel1;
 reg [1:0] slave_sel2;
+reg [1:0] slave_sel3;
 reg [31:0] addr1;
 reg [31:0] addr2;
+reg [31:0] addr3;
 reg wcontrol1;
 reg wcontrol2;
+reg wcontrol3;
 
 wire [31:0] dout1;
+wire [31:0] dout2;
+wire [31:0] dout3;
 /*
 design_1_wrapper uut ( 
     .addr1(addr1),
@@ -52,18 +59,24 @@ design_1_wrapper uut (
   design_1_wrapper uut
        (.addr1(addr1),
         .addr2(addr2),
+        .addr3(addr3),
         .clk(clk),
         .din1(din1),
         .din2(din2),
+        .din3(din3),
         .dout1(dout1),
         .dout2(dout2),
+        .dout3(dout3),
         .enable1(enable1),
         .enable2(enable2),
+        .enable3(enable3),
         .resetn(resetn),
         .slave_sel1(slave_sel1),
         .slave_sel2(slave_sel2),
+        .slave_sel3(slave_sel3),
         .wcontrol1(wcontrol1),
-        .wcontrol2(wcontrol2)
+        .wcontrol2(wcontrol2),
+        .wcontrol3(wcontrol3)
         );
 
 //clock generation
@@ -106,6 +119,21 @@ begin
 end
 endtask
 
+task write3( input [1:0] sel, input [31:0] address, input [31:0] a);
+begin
+  @(posedge clk)
+  slave_sel3 = sel;
+  enable3 = 1'b1; 
+  din3 = a;
+  addr3 = address;
+  wcontrol3 = 1'b1;
+  #100;
+  enable3 = 1'b0;
+  wcontrol3 = 1'b0;
+  #40;
+end
+endtask
+
 task read1(input [1:0] sel, input [31:0] address);
 begin
   @(posedge clk)
@@ -134,6 +162,20 @@ begin
 end
 endtask
 
+task read3(input [1:0] sel, input [31:0] address);
+begin
+  @(posedge clk)
+  slave_sel3 = sel;
+  enable3 = 1'b1;
+  addr3 = address;
+  wcontrol3 = 1'b0;
+  #80;
+  enable3 = 1'b0;
+  wcontrol3 = 1'b0;
+  #60;
+end
+endtask
+
 initial begin
   enable1 = 1'b0;
   din1 = 32'd0;
@@ -147,6 +189,12 @@ initial begin
   wcontrol2 = 1'b0;
   //hrdata = 32'd43;
   slave_sel2 = 2'b00;
+  enable3 = 1'b0;
+  din3 = 32'd0;
+  addr3 = 32'd0;
+  wcontrol3 = 1'b0;
+  //hrdata = 32'd43;
+  slave_sel3 = 2'b00;
   #10 resetn = 0;
   #40 resetn = 1;
   
@@ -165,7 +213,7 @@ initial begin
   read(2'b01, 32'd4);                   //read slave0 addr6
   read(2'b01, 32'd3);                   //read slave0 addr5
 */
-  write1(2'b01, 32'd9, 32'd1);  //write slave1 addr 9 => 3
+ /* write1(2'b01, 32'd9, 32'd1);  //write slave1 addr 9 => 3
   write2(2'b10, 32'd6, 32'd44); //write slave1 addr 6 => 176
   write1(2'b01, 32'd5, 32'd4); //write slave1 addr 6 => 176
   write1(2'b01, 32'd4, 32'd14); //write slave1 addr 6 => 176
@@ -180,6 +228,11 @@ initial begin
   read1(2'b01, 32'd3);                   //read slave0 addr5
   write1(2'b11, 32'd3, 32'd69);
   read1(2'b11, 32'd3);
+*/
+write3(2'b10, 32'd1, 32'd433);
+read3(2'b10, 32'd1);
+read1(2'b10, 32'd1);
+
 end
 
 endmodule
