@@ -49,8 +49,8 @@ initial begin
   #10 hresetn = 1;
   
 
-  // basic write and read
-  //basic_wr();
+   //basic write and read
+    basic_wr();
 
   // Wait state write and read
   //wr_wait_state();
@@ -62,7 +62,7 @@ initial begin
   //burst_wrap4(32'd1);
 
   // burst incr 4
-  burst_incr4();
+  //burst_incr4();
 
 
 end

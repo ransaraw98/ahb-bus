@@ -19,12 +19,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-/*##########Script Information###############################
-  # Purpose: Arbiter RTL For System Bus Design   
-  # Updated: 07-08-2022                                  
-  # Author : Rumesh                                  
-  ###########################################################*/
-  
 `timescale 1ns / 1ps
 
 module arbiter(
@@ -36,7 +30,8 @@ input hreq_2,
 input [1:0] sel_1,
 input [1:0]sel_2,
 input hready,
-input hready_out,
+input hready_out,   //signal from the selected slave
+input hresp,        //signal from the selected slave
 	
 output reg hgrant_1,
 output reg hgrant_2,
@@ -53,9 +48,9 @@ output reg [1:0] sel
 	reg [1:0]  state;
     reg [1:0]  next_state;
 	
-    wire busy;
+    wire tr_done;
     
-    assign busy = hready | hready_out;
+    assign tr_done = (!hresp) && hready_out;
 
 always @(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
@@ -71,48 +66,33 @@ case(state)
     IDLE:begin
         if(hreq_1 == 1) // normal request only from master 1
 			begin
-			 state <= GRANT1;
+			 next_state <= GRANT1;
 			end
 		else if(hreq_2 == 1) // normal request only from master 2
 			begin
-			 state <= GRANT2;
+			 next_state <= GRANT2;
 			end
-		else if((hreq_1 == 0) && (hreq_2==0))
+		else 
 			begin
-			 state <= IDLE;
+			 next_state <= IDLE;
 			end
 		end  
 	GRANT1:begin
-	   if((hreq_1 == 0) && (hreq_2==0))
-			begin
-				state <= IDLE;
-			end
-	   else if((hreq_1 == 0) && (hreq_2==1))
-	       	begin
-				state <= GRANT2;
-			end	
-       else //hreq_1 ==1 && hreq_2 == 1 OR hreq_1 == 1 && hreq_2 ==0
-            begin
-	       		state <= GRANT1;
-            end
+        if(!tr_done) begin
+            next_state <= GRANT1;
+        end
+        else
+            next_state <= IDLE;
         end
     GRANT2:begin
-        if((hreq_1 == 0) && (hreq_2==0))
-			begin
-				state <= IDLE;
-			end
-        else if((hreq_2 == 0) && (hreq_1 ==1))
-        begin
-                state <= GRANT1;
+        if(!tr_done) begin
+            next_state <= GRANT2;
         end
-        
-        else if((hreq_2 == 1) && (hreq_1 ==0))
-        begin
-                state <= GRANT2;
-        end
+        else
+            next_state <= IDLE;
         end
     default:begin
-            state <= IDLE; 
+            next_state <= IDLE; 
     end
     endcase
 end
@@ -126,7 +106,7 @@ always @(posedge hclk, negedge hresetn) begin
         next_state <= IDLE;
     end
 	else begin
-    case(state)		
+    case(next_state)		
 		IDLE:begin
 			hgrant_1 <= 0;
 			hgrant_2 <= 0;
