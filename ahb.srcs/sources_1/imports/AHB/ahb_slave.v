@@ -200,6 +200,8 @@ always @(*) begin
         raddr <= haddr; //rahal
         next_state = s3;
       end
+      else if(hsel== 1'b0)
+        next_state = 0;
       else begin
         next_state = s1;
       end
@@ -323,7 +325,7 @@ always @(posedge hclk, negedge hresetn) begin
       idle: begin
         hreadyout <= 1'b0;
         hresp <= 1'b0;
-        hrdata <= hrdata;
+        hrdata <= 32'hzzzz_zzzz;
         waddr <= waddr;
         raddr <= raddr;
       end

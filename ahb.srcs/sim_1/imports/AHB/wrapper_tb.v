@@ -68,7 +68,7 @@ begin
   #100;
   enable1 = 1'b0;
   wcontrol1 = 1'b0;
-  #20;
+  #40;
 end
 endtask
 
@@ -99,17 +99,27 @@ initial begin
   
 
   // write
+ /* write(2'b10, 32'd9, 32'd1, 32'd2);  //write slave1 addr 9 => 3
+  write(2'b10, 32'd6, 32'd44, 32'd132); //write slave1 addr 6 => 176
+  write(2'b10, 32'd5, 32'd4, 32'd132); //write slave1 addr 6 => 176
+  write(2'b10, 32'd4, 32'd14, 32'd132); //write slave1 addr 6 => 176
+  write(2'b10, 32'd3, 32'd24, 32'd132); //write slave1 addr 6 => 176
+  // read 
+  read(2'b01, 32'd9);                   //read slave2 addr8
+  //write(2'b01, 32'd5, 32'd55, 32'd112); //write slave1 addr 5 => 136
+  read(2'b01, 32'd6);                   //read slave0 add9
+  read(2'b01, 32'd5);                   //read slave1 addr7
+  read(2'b01, 32'd4);                   //read slave0 addr6
+  read(2'b01, 32'd3);                   //read slave0 addr5
+*/
   write(2'b01, 32'd9, 32'd1, 32'd2);  //write slave1 addr 9 => 3
-  //write(2'b10, 32'd8, 32'd32, 32'd3); //write slave2 addr 8 => 35
-  //write(2'b10, 32'd7, 32'd7, 32'd11); //write slave2 addr 7 => 18
-  write(2'b01, 32'd6, 32'd44, 32'd132); //write slave1 addr 6 => 176
+  write(2'b10, 32'd6, 32'd44, 32'd132); //write slave1 addr 6 => 176
   write(2'b01, 32'd5, 32'd4, 32'd132); //write slave1 addr 6 => 176
   write(2'b01, 32'd4, 32'd14, 32'd132); //write slave1 addr 6 => 176
   write(2'b01, 32'd3, 32'd24, 32'd132); //write slave1 addr 6 => 176
-  // read 
   read(2'b01, 32'd9);                   //read slave2 addr8
-  write(2'b01, 32'd5, 32'd55, 32'd112); //write slave1 addr 5 => 136
-  read(2'b01, 32'd6);                   //read slave0 add9
+  //write(2'b01, 32'd5, 32'd55, 32'd112); //write slave1 addr 5 => 136
+  read(2'b10, 32'd6);                   //read slave0 add9
   read(2'b01, 32'd5);                   //read slave1 addr7
   read(2'b01, 32'd4);                   //read slave0 addr6
   read(2'b01, 32'd3);                   //read slave0 addr5
