@@ -146,7 +146,7 @@ always @(posedge hclk, negedge hresetn) begin
 			sel <= sel_2;
 			//state <= (busy == 1'b1)?GRANT2:IDLE;
 			end
-		GRANT2:begin
+		GRANT3:begin
 			hgrant_1 <= 0;
 			hgrant_2 <= 0;
 			hgrant_3 <= 1;
