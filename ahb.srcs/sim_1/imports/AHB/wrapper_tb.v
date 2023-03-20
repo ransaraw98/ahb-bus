@@ -178,7 +178,8 @@ initial begin
   read1(2'b01, 32'd5);                   //read slave1 addr7
   read1(2'b01, 32'd4);                   //read slave0 addr6
   read1(2'b01, 32'd3);                   //read slave0 addr5
-
+  write1(2'b11, 32'd3, 32'd69);
+  read1(2'b11, 32'd3);
 end
 
 endmodule
