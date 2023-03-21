@@ -213,7 +213,7 @@ initial begin
   read(2'b01, 32'd4);                   //read slave0 addr6
   read(2'b01, 32'd3);                   //read slave0 addr5
 */
- /* write1(2'b01, 32'd9, 32'd1);  //write slave1 addr 9 => 3
+  write1(2'b01, 32'd9, 32'd1);  //write slave1 addr 9 => 3
   write2(2'b10, 32'd6, 32'd44); //write slave1 addr 6 => 176
   write1(2'b01, 32'd5, 32'd4); //write slave1 addr 6 => 176
   write1(2'b01, 32'd4, 32'd14); //write slave1 addr 6 => 176
@@ -228,10 +228,10 @@ initial begin
   read1(2'b01, 32'd3);                   //read slave0 addr5
   write1(2'b11, 32'd3, 32'd69);
   read1(2'b11, 32'd3);
-*/
-write3(2'b10, 32'd1, 32'd433);
-read3(2'b10, 32'd1);
-read1(2'b10, 32'd1);
+
+//write3(2'b10, 32'd1, 32'd433);
+//read3(2'b10, 32'd1);
+//read1(2'b10, 32'd1);
 
 end
 

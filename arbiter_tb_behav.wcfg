@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="143509593fs"></ZoomEndTime>
-      <Cursor1Time time="1000000000fs"></Cursor1Time>
+      <ZoomEndTime time="289637106fs"></ZoomEndTime>
+      <Cursor1Time time="80000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="127"></NameColumnWidth>
-      <ValueColumnWidth column_width="155"></ValueColumnWidth>
+      <ValueColumnWidth column_width="151"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="20" />
    <wvobject type="logic" fp_name="/arbiter_tb/uut/hclk">
       <obj_property name="ElementShortName">hclk</obj_property>
       <obj_property name="ObjectShortName">hclk</obj_property>
@@ -44,6 +44,10 @@
       <obj_property name="ElementShortName">sel_2[1:0]</obj_property>
       <obj_property name="ObjectShortName">sel_2[1:0]</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/arbiter_tb/uut/tr_done">
+      <obj_property name="ElementShortName">tr_done</obj_property>
+      <obj_property name="ObjectShortName">tr_done</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/arbiter_tb/uut/hready">
       <obj_property name="ElementShortName">hready</obj_property>
       <obj_property name="ObjectShortName">hready</obj_property>
@@ -51,6 +55,10 @@
    <wvobject type="logic" fp_name="/arbiter_tb/uut/hready_out">
       <obj_property name="ElementShortName">hready_out</obj_property>
       <obj_property name="ObjectShortName">hready_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/arbiter_tb/uut/hresp">
+      <obj_property name="ElementShortName">hresp</obj_property>
+      <obj_property name="ObjectShortName">hresp</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/arbiter_tb/uut/hgrant_1">
       <obj_property name="ElementShortName">hgrant_1</obj_property>
@@ -71,10 +79,6 @@
    <wvobject type="array" fp_name="/arbiter_tb/uut/next_state">
       <obj_property name="ElementShortName">next_state[1:0]</obj_property>
       <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/arbiter_tb/uut/busy">
-      <obj_property name="ElementShortName">busy</obj_property>
-      <obj_property name="ObjectShortName">busy</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/arbiter_tb/uut/IDLE">
       <obj_property name="ElementShortName">IDLE[1:0]</obj_property>
