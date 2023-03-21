@@ -159,7 +159,7 @@ always @(posedge hclk, negedge hresetn) begin
         hgrant_1 <= 0;
         hgrant_2 <= 0;
         hgrant_3 <= 0;
-        sel <= 2'b00;
+        sel <= 4'b0000;
         state <= IDLE;
         next_state <= IDLE;
     end
@@ -169,7 +169,7 @@ always @(posedge hclk, negedge hresetn) begin
 			hgrant_1 <= 0;
 			hgrant_2 <= 0;
 			hgrant_3 <= 0;
-			sel <= 2'b00;
+			sel <= 4'b0000;
 		end	
 					
 		GRANT1:begin // access given to Master 1
