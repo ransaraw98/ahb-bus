@@ -34,7 +34,9 @@ input [3:0]sel_3,
 input hready,
 input hready_out,   //signal from the selected slave
 input hresp,        //signal from the selected slave
-	
+input hgrantb,
+
+output reg hreqb,	
 output reg hgrant_1,
 output reg hgrant_2,
 output reg hgrant_3,
@@ -44,16 +46,21 @@ output reg [3:0] sel
 );
 
 //----------------------------
-	parameter IDLE = 2'b00;
-	parameter GRANT1 = 2'b01;
-	parameter GRANT2 = 2'b10;
-	parameter GRANT3 = 2'b11;
-
-	reg [1:0]  state;
-    reg [1:0]  next_state;
+	parameter IDLE = 3'b000;
+	parameter GRANT1 = 3'b001;
+	parameter GRANT2 = 3'b010;
+	parameter GRANT3 = 3'b011;
+    parameter BRIDGE1 = 3'b100;
+    parameter BRIDGE2 = 3'b101;
+    parameter BRIDGE3 = 3'b110;
+    
+	reg [2:0]  state;
+    reg [2:0]  next_state;
 	
     wire tr_done;
+    wire bridge;
     
+    assign bridge = (sel[3] | sel[2]);
     assign tr_done = (~hresp) && hready_out;
 
 always @(posedge hclk, negedge hresetn) begin
@@ -68,23 +75,37 @@ end
 always@(*)begin
 case(state)
     IDLE:begin
-        if(hreq_1 == 1) 
+        if((hreq_1 == 1)&&(bridge == 0)) 
 			begin
 			 next_state = GRANT1;
 			end
-		else if(hreq_2 == 1) 
+		else if((hreq_2 == 1)&&(bridge == 0)) 
 			begin
 			 next_state = GRANT2;
 			end
-		else if(hreq_3 == 1) 
+		else if((hreq_3 == 1)&&(bridge == 0))
 			begin
 			 next_state = GRANT3;
 			end
+		else if((hreq_1 == 1)&&(bridge == 1))
+			begin
+			 next_state = BRIDGE1;
+			end
+		else if((hreq_2 == 1)&&(bridge == 1))
+			begin
+			 next_state = BRIDGE2;
+			end
+		else if((hreq_3 == 1)&&(bridge == 1))
+			begin
+			 next_state = BRIDGE3;
+			end
+		
 		else 
 			begin
 			 next_state = IDLE;
 			end
-		end  
+		end 
+		 
 	GRANT1:begin
         if(!tr_done) begin
             next_state = GRANT1;
@@ -105,7 +126,28 @@ case(state)
         end
         else
             next_state = IDLE;
+        end
+    BRIDGE1:begin
+        if(!tr_done) begin
+            next_state = BRIDGE1;
+        end
+        else
+            next_state = IDLE;
         end    
+    BRIDGE2:begin
+        if(!tr_done) begin
+            next_state = BRIDGE2;
+        end
+        else
+            next_state = IDLE;
+        end
+    BRIDGE3:begin
+        if(!tr_done) begin
+            next_state = BRIDGE3;
+        end
+        else
+            next_state = IDLE;
+        end                 
     default:begin
             next_state = IDLE; 
     end
@@ -150,6 +192,30 @@ always @(posedge hclk, negedge hresetn) begin
 			hgrant_1 <= 0;
 			hgrant_2 <= 0;
 			hgrant_3 <= 1;
+			sel <= sel_3;
+			//state <= (busy == 1'b1)?GRANT2:IDLE;
+			end
+		BRIDGE1:begin
+			hgrant_1 <= hgrantb;
+			hreqb <=hreq_1;
+			hgrant_2 <= 0;
+			hgrant_3 <= 0;
+			sel <= sel_1;
+			//state <= (busy == 1'b1)?GRANT2:IDLE;
+			end	
+		BRIDGE2:begin
+			hgrant_1 <= 0;
+			hgrant_2 <= hgrantb;
+			hreqb <= hreq_2;
+			hgrant_3 <= 0;
+			sel <= sel_2;
+			//state <= (busy == 1'b1)?GRANT2:IDLE;
+			end	
+		BRIDGE3:begin
+			hgrant_1 <= 0;
+			hgrant_2 <= 0;
+			hgrant_3 <= hgrantb;
+			hreqb <= hreq_3;
 			sel <= sel_3;
 			//state <= (busy == 1'b1)?GRANT2:IDLE;
 			end	
