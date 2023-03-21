@@ -20,10 +20,10 @@ module ahb_master(
   //input hreadyout,
   //input hresp,
   input [31:0] hrdata,
-  input [1:0] slave_sel,
+  input [3:0] slave_sel,
   input hgrant,
   
-  output reg [1:0] sel,
+  output reg [3:0] sel,
   output reg [31:0] haddr,
   output reg hwrite,
   //output reg [2:0] hsize,
@@ -76,7 +76,7 @@ always@(*) begin
     end
 
     await: begin
-        hreq = 1;
+        //hreq = 1;
         if(hgrant==1'b1)
             next_state = s1;
       end
@@ -117,7 +117,7 @@ end
 
 always@(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
-    sel <= 2'b00;
+    sel <= 4'b0000;
     haddr <= 32'h0000_0000;
     hwrite <= 1'b0;
     //hsize <= 3'b000;
@@ -141,7 +141,7 @@ always@(posedge hclk, negedge hresetn) begin
         dout <= dout;
         hreq <=0;
       end
-      /*await: begin
+      await: begin
         sel <= slave_sel;
         haddr <= addr;
         hwrite <= wr; //caution earlier hwrite
@@ -150,7 +150,7 @@ always@(posedge hclk, negedge hresetn) begin
         hwdata <= hwdata;
         dout <= dout;
         hreq <= 1;
-      end*/
+      end
       
       s1: begin 
         sel <= 	slave_sel;

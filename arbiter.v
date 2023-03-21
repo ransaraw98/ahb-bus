@@ -28,9 +28,9 @@ input hresetn,
 input hreq_1,
 input hreq_2,
 input hreq_3,
-input [1:0] sel_1,
-input [1:0]sel_2,
-input [1:0]sel_3,
+input [3:0] sel_1,
+input [3:0]sel_2,
+input [3:0]sel_3,
 input hready,
 input hready_out,   //signal from the selected slave
 input hresp,        //signal from the selected slave
@@ -38,7 +38,7 @@ input hresp,        //signal from the selected slave
 output reg hgrant_1,
 output reg hgrant_2,
 output reg hgrant_3,
-output reg [1:0] sel
+output reg [3:0] sel
 
 
 );
