@@ -23,7 +23,7 @@
 module bridge(
     input sel_l,  //whether bridge is selected
     input hreq_in_l,
-    input slave_sel_in_l,
+    input [3:0]slave_sel_in_l,
     input hgrant_in_r,
     input hresp_in_r,
     input hreadyout_in_r,
@@ -42,7 +42,7 @@ module bridge(
     output hresp_out_l,
     output hreadyout_out_l,
     output hreq_out_r,
-    output slave_sel_out_r,
+    output [3:0] slave_sel_out_r,
     output hgrant_out_l
     );
     

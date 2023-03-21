@@ -52,7 +52,7 @@ module bridge_tb(
         end
         
         
-task write1( input [1:0] sel, input [31:0] address, input [31:0] a);
+task write1( input [3:0] sel, input [31:0] address, input [31:0] a);
 begin
   @(posedge clk)
   slave_sel1 = sel;
@@ -67,7 +67,7 @@ begin
 end
 endtask
 
-task read1(input [1:0] sel, input [31:0] address);
+task read1(input [3:0] sel, input [31:0] address);
 begin
   @(posedge clk)
   slave_sel1 = sel;
@@ -81,6 +81,8 @@ begin
 end
 endtask
 
+        
+
 initial begin
   enable1 = 1'b0;
   din1 = 32'd0;
@@ -92,8 +94,12 @@ initial begin
   #10 resetn = 0;
   #40 resetn = 1;
 
-    write1(2'b01, 32'd9, 32'd1); 
-    read1(2'b01, 32'd9);
+    write1(4'b0001, 32'd9, 32'd1); 
+    read1(4'b0001, 32'd9);
+    write1(4'b0001, 32'd10, 32'd33); 
+    read1(4'b0001, 32'd10);
+    write1(4'b0110, 32'd9, 32'd21); 
+    read1(4'b0110, 32'd9);
 
 end
 endmodule

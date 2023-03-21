@@ -60,7 +60,7 @@ output reg [3:0] sel
     wire tr_done;
     wire bridge;
     
-    assign bridge = (sel[3] | sel[2]);
+    assign bridge = (sel_1[3] | sel_1[2] | sel_2[3] | sel_2[2] | sel_3[3] | sel_3[2]);
     assign tr_done = (~hresp) && hready_out;
 
 always @(posedge hclk, negedge hresetn) begin
@@ -161,6 +161,7 @@ always @(posedge hclk, negedge hresetn) begin
         hgrant_3 <= 0;
         sel <= 4'b0000;
         state <= IDLE;
+        hreqb <= 0;
         next_state <= IDLE;
     end
 	else begin
