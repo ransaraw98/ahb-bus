@@ -193,11 +193,11 @@ always @(*) begin
 
 
       if((hwrite == 1'b1) && (hready == 1'b1)) begin
-        waddr <= haddr; //rahal
+        //waddr <= haddr; //rahal
         next_state = s2;
       end
       else if((hwrite == 1'b0) && (hready == 1'b1)) begin
-        raddr <= haddr; //rahal
+        //addr <= haddr; //rahal
         next_state = s3;
       end
       else if(hsel== 1'b0)
@@ -326,15 +326,15 @@ always @(posedge hclk, negedge hresetn) begin
         hreadyout <= 1'b0;
         hresp <= 1'b0;
         hrdata <= 32'hzzzz_zzzz;
-        waddr <= waddr;
-        raddr <= raddr;
+        //waddr <= waddr;
+        //raddr <= raddr;
       end
       s1: begin
         hreadyout <= 1'b0;
         hresp <= 1'b0;
         hrdata <= hrdata;
-        //waddr <= haddr;
-        //raddr <= haddr;
+        waddr <= haddr;
+        raddr <= haddr;
       end
       s2: begin
         case({single_flag,incr_flag,wrap4_flag,incr4_flag,wrap8_flag,incr8_flag,wrap16_flag,incr16_flag})
