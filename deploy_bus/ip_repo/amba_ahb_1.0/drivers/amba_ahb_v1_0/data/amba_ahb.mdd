@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER amba_ahb
+	OPTION supported_peripherals = (amba_ahb);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = amba_ahb;
+END DRIVER
