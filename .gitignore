@@ -1,7 +1,9 @@
+ahb.srcs/sources_1/bd/
 ahb.cache/
 ahb.hw/
 ahb.ip_user_files/
 ahb.sim/
 ahb.xpr
+ahb.runs/
 vivado.log
 vivado.jou
