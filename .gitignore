@@ -1,4 +1,6 @@
 ahb.srcs/sources_1/bd/
+!ahb.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.v
+!ahb.srcs/sources_1/bd/design_bridge/hdl/design_bridge_wrapper.v
 ahb.cache/
 ahb.hw/
 ahb.ip_user_files/
