@@ -52,8 +52,6 @@ parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011, 
 always@(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
     state <= idle;
-    hreq <=0;
-    next_state <= idle;
   end
   else begin
     state = next_state;
@@ -128,6 +126,8 @@ always@(posedge hclk, negedge hresetn) begin
     hready <= 1'b0;
     hwdata <= 32'h0000_0000;
     dout <= 32'h0000_0000;
+    hreq <=0;
+    next_state <= idle;
   end
   else begin
     case(next_state)
