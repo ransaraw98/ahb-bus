@@ -1,7 +1,7 @@
 //Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-//Date        : Thu Mar 23 12:04:31 2023
+//Date        : Thu Mar 23 13:58:45 2023
 //Host        : ransara-X510UNR running 64-bit Ubuntu 22.04.2 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -44,9 +44,9 @@ module design_1_wrapper
   input enable2;
   input enable3;
   input resetn;
-  input [1:0]slave_sel1;
-  input [1:0]slave_sel2;
-  input [1:0]slave_sel3;
+  input [3:0]slave_sel1;
+  input [3:0]slave_sel2;
+  input [3:0]slave_sel3;
   input wcontrol1;
   input wcontrol2;
   input wcontrol3;
@@ -65,9 +65,9 @@ module design_1_wrapper
   wire enable2;
   wire enable3;
   wire resetn;
-  wire [1:0]slave_sel1;
-  wire [1:0]slave_sel2;
-  wire [1:0]slave_sel3;
+  wire [3:0]slave_sel1;
+  wire [3:0]slave_sel2;
+  wire [3:0]slave_sel3;
   wire wcontrol1;
   wire wcontrol2;
   wire wcontrol3;
