@@ -1,5 +1,4 @@
 
-`timescale 1 ns / 1 ps
 
 	module amba_ahb_v1_0 #
 	(
@@ -15,11 +14,12 @@
 	)
 	(
 		// Users to add ports here
-        output wire [31:0] dout1,
-        output wire [31:0] dout2,
-        output wire [31:0] dout3,
-        input wire hclk,
-        input wire hresetn,
+        output reg [31 : 0] dout1,
+        output reg [31 : 0] dout2,
+        output reg [31 : 0] dout3,
+        input wire clk,
+        input wire resetn,
+        output wire test,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -47,11 +47,19 @@
 		output wire  s_axi_rvalid,
 		input wire  s_axi_rready
 	);
+	wire [31:0] dout1_wire;
+	wire [31:0] dout2_wire;
+	wire [31:0] dout3_wire;
 // Instantiation of Axi Bus Interface S_AXI
 	amba_ahb_v1_0_S_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S_AXI_DATA_WIDTH),
 		.C_S_AXI_ADDR_WIDTH(C_S_AXI_ADDR_WIDTH)
 	) amba_ahb_v1_0_S_AXI_inst (
+	    .dout1(dout1_wire),
+		.dout2(dout2_wire),
+		.dout3(dout3_wire),
+		//.clk(clk),
+		//.resetn(resetn),
 		.S_AXI_ACLK(s_axi_aclk),
 		.S_AXI_ARESETN(s_axi_aresetn),
 		.S_AXI_AWADDR(s_axi_awaddr),
@@ -72,16 +80,16 @@
 		.S_AXI_RDATA(s_axi_rdata),
 		.S_AXI_RRESP(s_axi_rresp),
 		.S_AXI_RVALID(s_axi_rvalid),
-		.S_AXI_RREADY(s_axi_rready),
-		.dout1(dout1),
-		.dout2(dout2),
-		.dout3(dout3),
-		.hclk(hclk),
-		.hresetn(hresetn)
+		.S_AXI_RREADY(s_axi_rready)
 	);
 
 	// Add user logic here
 
+    always@(*)begin
+        dout1 = dout1_wire;
+        dout2 = dout2_wire;
+        dout3 = dout3_wire;
+    end
 	// User logic ends
 
 	endmodule

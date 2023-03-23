@@ -1,5 +1,4 @@
 
-`timescale 1 ns / 1 ps
 
 	module amba_ahb_v1_0_S_AXI #
 	(
@@ -15,11 +14,11 @@
 	)
 	(
 		// Users to add ports here
-        output wire [31:0] dout1,
-        output wire [31:0] dout2,
-        output wire [31:0] dout3,
-        input wire hclk,
-        input wire hresetn,
+        output reg [31:0] dout1,
+        output reg [31:0] dout2,
+        output reg [31:0] dout3,
+        //input wire clk,
+        //input wire resetn,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -534,21 +533,30 @@
 	end    
 
 	// Add user logic here
-      design_1_2_wrapper uut
+	wire [31:0] dout1_wire;
+	wire [31:0] dout2_wire;
+	wire [31:0] dout3_wire;
+	
+	always@(*)begin
+	    dout1 = dout1_wire;
+	    dout2 = dout2_wire;
+	    dout3 = dout3_wire; 
+	end
+      design_2 custom_logic
        (.addr1(slv_reg0),
         .addr2(slv_reg1),
         .addr3(slv_reg2),
-        .clk(hclk),
+        .clk(S_AXI_ACLK),
         .din1(slv_reg3),
         .din2(slv_reg4),
         .din3(slv_reg5),
-        .dout1(dout1),
-        .dout2(dout2),
-        .dout3(dout3),
+        .dout1(dout1_wire),
+        .dout2(dout2_wire),
+        .dout3(dout3_wire),
         .enable1(slv_reg9[0]),
         .enable2(slv_reg9[1]),
         .enable3(slv_reg9[2]),
-        .resetn(hresetn),
+        .resetn(S_AXI_ARESETN),
         .slave_sel1(slv_reg6),
         .slave_sel2(slv_reg7),
         .slave_sel3(slv_reg8),
@@ -556,6 +564,8 @@
         .wcontrol2(slv_reg11),
         .wcontrol3(slv_reg12)
         );
+        
+
 	// User logic ends
 
 	endmodule
