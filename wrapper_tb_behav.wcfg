@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="329500001fs"></ZoomEndTime>
-      <Cursor1Time time="22500000fs"></Cursor1Time>
+      <ZoomStartTime time="1335400000fs"></ZoomStartTime>
+      <ZoomEndTime time="2047329978fs"></ZoomEndTime>
+      <Cursor1Time time="2000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="127"></NameColumnWidth>
-      <ValueColumnWidth column_width="139"></ValueColumnWidth>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
+      <ValueColumnWidth column_width="99"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="90" />
+   <WVObjectSize size="42" />
    <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -44,121 +44,270 @@
       <obj_property name="ElementShortName">wcontrol1</obj_property>
       <obj_property name="ObjectShortName">wcontrol1</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/dina1">
-      <obj_property name="ElementShortName">dina1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dina1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/dinb1">
-      <obj_property name="ElementShortName">dinb1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dinb1[31:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/dout1">
       <obj_property name="ElementShortName">dout1[31:0]</obj_property>
       <obj_property name="ObjectShortName">dout1[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="divider177" type="divider">
       <obj_property name="label">master1 </obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/inst/state">
-      <obj_property name="ElementShortName">state[2:0]</obj_property>
-      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   <wvobject type="group" fp_name="group3212">
+      <obj_property name="label">master1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/inst/state">
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/inst/next_state">
+         <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hreq">
+         <obj_property name="ElementShortName">hreq</obj_property>
+         <obj_property name="ObjectShortName">hreq</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hgrant">
+         <obj_property name="ElementShortName">hgrant</obj_property>
+         <obj_property name="ObjectShortName">hgrant</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hclk">
+         <obj_property name="ElementShortName">hclk</obj_property>
+         <obj_property name="ObjectShortName">hclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hresetn">
+         <obj_property name="ElementShortName">hresetn</obj_property>
+         <obj_property name="ObjectShortName">hresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/addr">
+         <obj_property name="ElementShortName">addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/wr">
+         <obj_property name="ElementShortName">wr</obj_property>
+         <obj_property name="ObjectShortName">wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/slave_sel">
+         <obj_property name="ElementShortName">slave_sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">slave_sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/sel">
+         <obj_property name="ElementShortName">sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/haddr">
+         <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hwrite">
+         <obj_property name="ElementShortName">hwrite</obj_property>
+         <obj_property name="ObjectShortName">hwrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hburst">
+         <obj_property name="ElementShortName">hburst[2:0]</obj_property>
+         <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hready">
+         <obj_property name="ElementShortName">hready</obj_property>
+         <obj_property name="ObjectShortName">hready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hwdata">
+         <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hrdata">
+         <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/dout">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hclk">
-      <obj_property name="ElementShortName">hclk</obj_property>
-      <obj_property name="ObjectShortName">hclk</obj_property>
+   <wvobject fp_name="divider3213" type="divider">
+      <obj_property name="label">master2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hresetn">
-      <obj_property name="ElementShortName">hresetn</obj_property>
-      <obj_property name="ObjectShortName">hresetn</obj_property>
+   <wvobject type="group" fp_name="group3245">
+      <obj_property name="label">master2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/state">
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/next_state">
+         <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hreq">
+         <obj_property name="ElementShortName">hreq</obj_property>
+         <obj_property name="ObjectShortName">hreq</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hgrant">
+         <obj_property name="ElementShortName">hgrant</obj_property>
+         <obj_property name="ObjectShortName">hgrant</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/dout">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hwdata">
+         <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hready">
+         <obj_property name="ElementShortName">hready</obj_property>
+         <obj_property name="ObjectShortName">hready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hburst">
+         <obj_property name="ElementShortName">hburst[2:0]</obj_property>
+         <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hwrite">
+         <obj_property name="ElementShortName">hwrite</obj_property>
+         <obj_property name="ObjectShortName">hwrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/haddr">
+         <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/sel">
+         <obj_property name="ElementShortName">sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/slave_sel">
+         <obj_property name="ElementShortName">slave_sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">slave_sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hrdata">
+         <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/wr">
+         <obj_property name="ElementShortName">wr</obj_property>
+         <obj_property name="ObjectShortName">wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/addr">
+         <obj_property name="ElementShortName">addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/din">
+         <obj_property name="ElementShortName">din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hresetn">
+         <obj_property name="ElementShortName">hresetn</obj_property>
+         <obj_property name="ObjectShortName">hresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_1/inst/hclk">
+         <obj_property name="ElementShortName">hclk</obj_property>
+         <obj_property name="ObjectShortName">hclk</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/enable">
-      <obj_property name="ElementShortName">enable</obj_property>
-      <obj_property name="ObjectShortName">enable</obj_property>
+   <wvobject fp_name="divider4219" type="divider">
+      <obj_property name="label">master3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/dina">
-      <obj_property name="ElementShortName">dina[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/dinb">
-      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/addr">
-      <obj_property name="ElementShortName">addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/wr">
-      <obj_property name="ElementShortName">wr</obj_property>
-      <obj_property name="ObjectShortName">wr</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hreadyout">
-      <obj_property name="ElementShortName">hreadyout</obj_property>
-      <obj_property name="ObjectShortName">hreadyout</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hresp">
-      <obj_property name="ElementShortName">hresp</obj_property>
-      <obj_property name="ObjectShortName">hresp</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hrdata">
-      <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/slave_sel">
-      <obj_property name="ElementShortName">slave_sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">slave_sel[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hgrant">
-      <obj_property name="ElementShortName">hgrant</obj_property>
-      <obj_property name="ObjectShortName">hgrant</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/sel">
-      <obj_property name="ElementShortName">sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">sel[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/haddr">
-      <obj_property name="ElementShortName">haddr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hwrite">
-      <obj_property name="ElementShortName">hwrite</obj_property>
-      <obj_property name="ObjectShortName">hwrite</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hsize">
-      <obj_property name="ElementShortName">hsize[2:0]</obj_property>
-      <obj_property name="ObjectShortName">hsize[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hburst">
-      <obj_property name="ElementShortName">hburst[2:0]</obj_property>
-      <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hprot">
-      <obj_property name="ElementShortName">hprot[3:0]</obj_property>
-      <obj_property name="ObjectShortName">hprot[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/htrans">
-      <obj_property name="ElementShortName">htrans[1:0]</obj_property>
-      <obj_property name="ObjectShortName">htrans[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hmastlock">
-      <obj_property name="ElementShortName">hmastlock</obj_property>
-      <obj_property name="ObjectShortName">hmastlock</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hready">
-      <obj_property name="ElementShortName">hready</obj_property>
-      <obj_property name="ObjectShortName">hready</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hwdata">
-      <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/dout">
-      <obj_property name="ElementShortName">dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_0/hreq">
-      <obj_property name="ElementShortName">hreq</obj_property>
-      <obj_property name="ObjectShortName">hreq</obj_property>
+   <wvobject type="group" fp_name="group4277">
+      <obj_property name="label">master3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hclk">
+         <obj_property name="ElementShortName">hclk</obj_property>
+         <obj_property name="ObjectShortName">hclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hresetn">
+         <obj_property name="ElementShortName">hresetn</obj_property>
+         <obj_property name="ObjectShortName">hresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/enable">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/din">
+         <obj_property name="ElementShortName">din[31:0]</obj_property>
+         <obj_property name="ObjectShortName">din[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/addr">
+         <obj_property name="ElementShortName">addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/wr">
+         <obj_property name="ElementShortName">wr</obj_property>
+         <obj_property name="ObjectShortName">wr</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hrdata">
+         <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hgrant">
+         <obj_property name="ElementShortName">hgrant</obj_property>
+         <obj_property name="ObjectShortName">hgrant</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/slave_sel">
+         <obj_property name="ElementShortName">slave_sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">slave_sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/sel">
+         <obj_property name="ElementShortName">sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/haddr">
+         <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hwrite">
+         <obj_property name="ElementShortName">hwrite</obj_property>
+         <obj_property name="ObjectShortName">hwrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hburst">
+         <obj_property name="ElementShortName">hburst[2:0]</obj_property>
+         <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hwdata">
+         <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hready">
+         <obj_property name="ElementShortName">hready</obj_property>
+         <obj_property name="ObjectShortName">hready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/hreq">
+         <obj_property name="ElementShortName">hreq</obj_property>
+         <obj_property name="ObjectShortName">hreq</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/dout">
+         <obj_property name="ElementShortName">dout[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/state">
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_master_2/inst/next_state">
+         <obj_property name="ElementShortName">next_state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[2:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="divider71" type="divider">
       <obj_property name="label">arbiter</obj_property>
@@ -168,9 +317,17 @@
       <obj_property name="ElementShortName">state[1:0]</obj_property>
       <obj_property name="ObjectShortName">state[1:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/arbiter_0/inst/next_state">
+      <obj_property name="ElementShortName">next_state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/arbiter_0/hclk">
       <obj_property name="ElementShortName">hclk</obj_property>
       <obj_property name="ObjectShortName">hclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/arbiter_0/inst/tr_done">
+      <obj_property name="ElementShortName">tr_done</obj_property>
+      <obj_property name="ObjectShortName">tr_done</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/arbiter_0/hresetn">
       <obj_property name="ElementShortName">hresetn</obj_property>
@@ -212,10 +369,6 @@
       <obj_property name="ElementShortName">sel[1:0]</obj_property>
       <obj_property name="ObjectShortName">sel[1:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/arbiter_0/inst/busy">
-      <obj_property name="ElementShortName">busy</obj_property>
-      <obj_property name="ObjectShortName">busy</obj_property>
-   </wvobject>
    <wvobject fp_name="divider176" type="divider">
       <obj_property name="label">tb</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -228,141 +381,194 @@
       <obj_property name="label">slave</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hclk">
-      <obj_property name="ElementShortName">hclk</obj_property>
-      <obj_property name="ObjectShortName">hclk</obj_property>
+   <wvobject type="group" fp_name="group1149">
+      <obj_property name="label">slave1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/next_state">
+         <obj_property name="ElementShortName">next_state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/state">
+         <obj_property name="ElementShortName">state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/raddr">
+         <obj_property name="ElementShortName">raddr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">raddr[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/waddr">
+         <obj_property name="ElementShortName">waddr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">waddr[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/mem">
+         <obj_property name="ElementShortName">mem[31:0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[31:0][31:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hrdata">
+         <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hreadyout">
+         <obj_property name="ElementShortName">hreadyout</obj_property>
+         <obj_property name="ObjectShortName">hreadyout</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hwdata">
+         <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hready">
+         <obj_property name="ElementShortName">hready</obj_property>
+         <obj_property name="ObjectShortName">hready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hburst">
+         <obj_property name="ElementShortName">hburst[2:0]</obj_property>
+         <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hwrite">
+         <obj_property name="ElementShortName">hwrite</obj_property>
+         <obj_property name="ObjectShortName">hwrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/haddr">
+         <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hresetn">
+         <obj_property name="ElementShortName">hresetn</obj_property>
+         <obj_property name="ObjectShortName">hresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hsel">
+         <obj_property name="ElementShortName">hsel</obj_property>
+         <obj_property name="ObjectShortName">hsel</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hclk">
+         <obj_property name="ElementShortName">hclk</obj_property>
+         <obj_property name="ObjectShortName">hclk</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hresetn">
-      <obj_property name="ElementShortName">hresetn</obj_property>
-      <obj_property name="ObjectShortName">hresetn</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hsel">
-      <obj_property name="ElementShortName">hsel</obj_property>
-      <obj_property name="ObjectShortName">hsel</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/haddr">
-      <obj_property name="ElementShortName">haddr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hwrite">
-      <obj_property name="ElementShortName">hwrite</obj_property>
-      <obj_property name="ObjectShortName">hwrite</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hsize">
-      <obj_property name="ElementShortName">hsize[2:0]</obj_property>
-      <obj_property name="ObjectShortName">hsize[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hburst">
-      <obj_property name="ElementShortName">hburst[2:0]</obj_property>
-      <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hprot">
-      <obj_property name="ElementShortName">hprot[3:0]</obj_property>
-      <obj_property name="ObjectShortName">hprot[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/htrans">
-      <obj_property name="ElementShortName">htrans[1:0]</obj_property>
-      <obj_property name="ObjectShortName">htrans[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hmastlock">
-      <obj_property name="ElementShortName">hmastlock</obj_property>
-      <obj_property name="ObjectShortName">hmastlock</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hready">
-      <obj_property name="ElementShortName">hready</obj_property>
-      <obj_property name="ObjectShortName">hready</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hwdata">
-      <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hreadyout">
-      <obj_property name="ElementShortName">hreadyout</obj_property>
-      <obj_property name="ObjectShortName">hreadyout</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/hrdata">
-      <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/mem">
-      <obj_property name="ElementShortName">mem[31:0][31:0]</obj_property>
-      <obj_property name="ObjectShortName">mem[31:0][31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/waddr">
-      <obj_property name="ElementShortName">waddr[4:0]</obj_property>
-      <obj_property name="ObjectShortName">waddr[4:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/raddr">
-      <obj_property name="ElementShortName">raddr[4:0]</obj_property>
-      <obj_property name="ObjectShortName">raddr[4:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/state">
-      <obj_property name="ElementShortName">state[1:0]</obj_property>
-      <obj_property name="ObjectShortName">state[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_0/inst/next_state">
-      <obj_property name="ElementShortName">next_state[1:0]</obj_property>
-      <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
+   <wvobject type="group" fp_name="group1182">
+      <obj_property name="label">slave2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hclk">
+         <obj_property name="ElementShortName">hclk</obj_property>
+         <obj_property name="ObjectShortName">hclk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hresetn">
+         <obj_property name="ElementShortName">hresetn</obj_property>
+         <obj_property name="ObjectShortName">hresetn</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hsel">
+         <obj_property name="ElementShortName">hsel</obj_property>
+         <obj_property name="ObjectShortName">hsel</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/haddr">
+         <obj_property name="ElementShortName">haddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">haddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hwrite">
+         <obj_property name="ElementShortName">hwrite</obj_property>
+         <obj_property name="ObjectShortName">hwrite</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hburst">
+         <obj_property name="ElementShortName">hburst[2:0]</obj_property>
+         <obj_property name="ObjectShortName">hburst[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hready">
+         <obj_property name="ElementShortName">hready</obj_property>
+         <obj_property name="ObjectShortName">hready</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hwdata">
+         <obj_property name="ElementShortName">hwdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hwdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hreadyout">
+         <obj_property name="ElementShortName">hreadyout</obj_property>
+         <obj_property name="ObjectShortName">hreadyout</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hresp">
+         <obj_property name="ElementShortName">hresp</obj_property>
+         <obj_property name="ObjectShortName">hresp</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/hrdata">
+         <obj_property name="ElementShortName">hrdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hrdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/mem">
+         <obj_property name="ElementShortName">mem[31:0][31:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[31:0][31:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/waddr">
+         <obj_property name="ElementShortName">waddr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">waddr[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/raddr">
+         <obj_property name="ElementShortName">raddr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">raddr[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/state">
+         <obj_property name="ElementShortName">state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/next_state">
+         <obj_property name="ElementShortName">next_state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">next_state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/single_flag">
+         <obj_property name="ElementShortName">single_flag</obj_property>
+         <obj_property name="ObjectShortName">single_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/incr_flag">
+         <obj_property name="ElementShortName">incr_flag</obj_property>
+         <obj_property name="ObjectShortName">incr_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/wrap4_flag">
+         <obj_property name="ElementShortName">wrap4_flag</obj_property>
+         <obj_property name="ObjectShortName">wrap4_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/incr4_flag">
+         <obj_property name="ElementShortName">incr4_flag</obj_property>
+         <obj_property name="ObjectShortName">incr4_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/wrap8_flag">
+         <obj_property name="ElementShortName">wrap8_flag</obj_property>
+         <obj_property name="ObjectShortName">wrap8_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/incr8_flag">
+         <obj_property name="ElementShortName">incr8_flag</obj_property>
+         <obj_property name="ObjectShortName">incr8_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/wrap16_flag">
+         <obj_property name="ElementShortName">wrap16_flag</obj_property>
+         <obj_property name="ObjectShortName">wrap16_flag</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/incr16_flag">
+         <obj_property name="ElementShortName">incr16_flag</obj_property>
+         <obj_property name="ObjectShortName">incr16_flag</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/idle">
+         <obj_property name="ElementShortName">idle[1:0]</obj_property>
+         <obj_property name="ObjectShortName">idle[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/s1">
+         <obj_property name="ElementShortName">s1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s1[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/s2">
+         <obj_property name="ElementShortName">s2[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s2[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/ahb_slave_1/inst/s3">
+         <obj_property name="ElementShortName">s3[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s3[1:0]</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="divider246" type="divider">
       <obj_property name="label">multiplexor</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/inst/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/inst/hresetn">
-      <obj_property name="ElementShortName">hresetn</obj_property>
-      <obj_property name="ObjectShortName">hresetn</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hrdata_1">
-      <obj_property name="ElementShortName">hrdata_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata_1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hrdata_2">
-      <obj_property name="ElementShortName">hrdata_2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata_2[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hrdata_3">
-      <obj_property name="ElementShortName">hrdata_3[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata_3[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hrdata_4">
-      <obj_property name="ElementShortName">hrdata_4[31:0]</obj_property>
-      <obj_property name="ObjectShortName">hrdata_4[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hreadyout_1">
-      <obj_property name="ElementShortName">hreadyout_1</obj_property>
-      <obj_property name="ObjectShortName">hreadyout_1</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hreadyout_2">
-      <obj_property name="ElementShortName">hreadyout_2</obj_property>
-      <obj_property name="ObjectShortName">hreadyout_2</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hreadyout_3">
-      <obj_property name="ElementShortName">hreadyout_3</obj_property>
-      <obj_property name="ObjectShortName">hreadyout_3</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hreadyout_4">
-      <obj_property name="ElementShortName">hreadyout_4</obj_property>
-      <obj_property name="ObjectShortName">hreadyout_4</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hresp_1">
-      <obj_property name="ElementShortName">hresp_1</obj_property>
-      <obj_property name="ObjectShortName">hresp_1</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hresp_2">
-      <obj_property name="ElementShortName">hresp_2</obj_property>
-      <obj_property name="ObjectShortName">hresp_2</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hresp_3">
-      <obj_property name="ElementShortName">hresp_3</obj_property>
-      <obj_property name="ObjectShortName">hresp_3</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hresp_4">
-      <obj_property name="ElementShortName">hresp_4</obj_property>
-      <obj_property name="ObjectShortName">hresp_4</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/sel">
       <obj_property name="ElementShortName">sel[1:0]</obj_property>
@@ -376,8 +582,24 @@
       <obj_property name="ElementShortName">hreadyout</obj_property>
       <obj_property name="ObjectShortName">hreadyout</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/multiplexor_0/hresp">
-      <obj_property name="ElementShortName">hresp</obj_property>
-      <obj_property name="ObjectShortName">hresp</obj_property>
+   <wvobject fp_name="divider312" type="divider">
+      <obj_property name="label">DECODER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/wrapper_tb/uut/design_1_i/decoder_0/inst/sel">
+      <obj_property name="ElementShortName">sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/decoder_0/inst/hsel_1">
+      <obj_property name="ElementShortName">hsel_1</obj_property>
+      <obj_property name="ObjectShortName">hsel_1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/decoder_0/inst/hsel_2">
+      <obj_property name="ElementShortName">hsel_2</obj_property>
+      <obj_property name="ObjectShortName">hsel_2</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/wrapper_tb/uut/design_1_i/decoder_0/inst/hsel_3">
+      <obj_property name="ElementShortName">hsel_3</obj_property>
+      <obj_property name="ObjectShortName">hsel_3</obj_property>
    </wvobject>
 </wave_config>

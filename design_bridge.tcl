@@ -1,6 +1,6 @@
 
 ################################################################
-# This is a generated script based on design: design_1
+# This is a generated script based on design: design_bridge
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -35,12 +35,12 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source design_1_script.tcl
+# source design_bridge_script.tcl
 
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# ahb_master, ahb_master, ahb_master, ahb_slave, ahb_slave, ahb_slave, arbiter, decoder, multiplexor, write_mux
+# ahb_master, ahb_slave, ahb_slave, arbiter, arbiter, bridge, decoder, decoder, multiplexor, multiplexor, write_mux, write_mux
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -57,7 +57,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name design_1
+set design_name design_bridge
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -126,20 +126,48 @@ if { $nRet != 0 } {
 
 set bCheckIPsPassed 1
 ##################################################################
+# CHECK IPs
+##################################################################
+set bCheckIPs 1
+if { $bCheckIPs == 1 } {
+   set list_check_ips "\ 
+xilinx.com:ip:xlconstant:1.1\
+"
+
+   set list_ips_missing ""
+   common::send_msg_id "BD_TCL-006" "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+
+   foreach ip_vlnv $list_check_ips {
+      set ip_obj [get_ipdefs -all $ip_vlnv]
+      if { $ip_obj eq "" } {
+         lappend list_ips_missing $ip_vlnv
+      }
+   }
+
+   if { $list_ips_missing ne "" } {
+      catch {common::send_msg_id "BD_TCL-115" "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+      set bCheckIPsPassed 0
+   }
+
+}
+
+##################################################################
 # CHECK Modules
 ##################################################################
 set bCheckModules 1
 if { $bCheckModules == 1 } {
    set list_check_mods "\ 
 ahb_master\
-ahb_master\
-ahb_master\
-ahb_slave\
 ahb_slave\
 ahb_slave\
 arbiter\
+arbiter\
+bridge\
+decoder\
 decoder\
 multiplexor\
+multiplexor\
+write_mux\
 write_mux\
 "
 
@@ -205,32 +233,17 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set addr1 [ create_bd_port -dir I -from 31 -to 0 -type data addr1 ]
-  set addr2 [ create_bd_port -dir I -from 31 -to 0 addr2 ]
-  set addr3 [ create_bd_port -dir I -from 31 -to 0 addr3 ]
+  set addr1 [ create_bd_port -dir I -from 31 -to 0 addr1 ]
   set clk [ create_bd_port -dir I -type clk clk ]
   set_property -dict [ list \
-   CONFIG.FREQ_HZ {50000000} \
+   CONFIG.FREQ_HZ {20000000} \
  ] $clk
-  set din1 [ create_bd_port -dir I -from 31 -to 0 din1 ]
-  set din2 [ create_bd_port -dir I -from 31 -to 0 -type data din2 ]
-  set din3 [ create_bd_port -dir I -from 31 -to 0 -type data din3 ]
+  set din1 [ create_bd_port -dir I -from 31 -to 0 -type data din1 ]
   set dout1 [ create_bd_port -dir O -from 31 -to 0 -type data dout1 ]
-  set dout2 [ create_bd_port -dir O -from 31 -to 0 -type data dout2 ]
-  set dout3 [ create_bd_port -dir O -from 31 -to 0 -type data dout3 ]
   set enable1 [ create_bd_port -dir I enable1 ]
-  set enable2 [ create_bd_port -dir I enable2 ]
-  set enable3 [ create_bd_port -dir I enable3 ]
   set resetn [ create_bd_port -dir I -type rst resetn ]
-  set_property -dict [ list \
-   CONFIG.POLARITY {ACTIVE_LOW} \
- ] $resetn
-  set slave_sel1 [ create_bd_port -dir I -from 1 -to 0 slave_sel1 ]
-  set slave_sel2 [ create_bd_port -dir I -from 1 -to 0 slave_sel2 ]
-  set slave_sel3 [ create_bd_port -dir I -from 1 -to 0 slave_sel3 ]
+  set slave_sel1 [ create_bd_port -dir I -from 3 -to 0 slave_sel1 ]
   set wcontrol1 [ create_bd_port -dir I wcontrol1 ]
-  set wcontrol2 [ create_bd_port -dir I wcontrol2 ]
-  set wcontrol3 [ create_bd_port -dir I wcontrol3 ]
 
   # Create instance: ahb_master_0, and set properties
   set block_name ahb_master
@@ -239,28 +252,6 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $ahb_master_0 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: ahb_master_1, and set properties
-  set block_name ahb_master
-  set block_cell_name ahb_master_1
-  if { [catch {set ahb_master_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $ahb_master_1 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: ahb_master_2, and set properties
-  set block_name ahb_master
-  set block_cell_name ahb_master_2
-  if { [catch {set ahb_master_2 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $ahb_master_2 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -287,17 +278,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: ahb_slave_2, and set properties
-  set block_name ahb_slave
-  set block_cell_name ahb_slave_2
-  if { [catch {set ahb_slave_2 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $ahb_slave_2 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
   # Create instance: arbiter_0, and set properties
   set block_name arbiter
   set block_cell_name arbiter_0
@@ -305,6 +285,28 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $arbiter_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: arbiter_1, and set properties
+  set block_name arbiter
+  set block_cell_name arbiter_1
+  if { [catch {set arbiter_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $arbiter_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: bridge_0, and set properties
+  set block_name bridge
+  set block_cell_name bridge_0
+  if { [catch {set bridge_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $bridge_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -320,6 +322,17 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: decoder_1, and set properties
+  set block_name decoder
+  set block_cell_name decoder_1
+  if { [catch {set decoder_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $decoder_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: multiplexor_0, and set properties
   set block_name multiplexor
   set block_cell_name multiplexor_0
@@ -327,6 +340,17 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $multiplexor_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: multiplexor_1, and set properties
+  set block_name multiplexor
+  set block_cell_name multiplexor_1
+  if { [catch {set multiplexor_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $multiplexor_1 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -342,69 +366,79 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: write_mux_1, and set properties
+  set block_name write_mux
+  set block_cell_name write_mux_1
+  if { [catch {set write_mux_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $write_mux_1 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+   CONFIG.CONST_WIDTH {3} \
+ ] $xlconstant_0
+
   # Create port connections
-  connect_bd_net -net Net [get_bd_ports clk] [get_bd_pins ahb_master_0/hclk] [get_bd_pins ahb_master_1/hclk] [get_bd_pins ahb_master_2/hclk] [get_bd_pins ahb_slave_0/hclk] [get_bd_pins ahb_slave_1/hclk] [get_bd_pins ahb_slave_2/hclk] [get_bd_pins arbiter_0/hclk]
-  connect_bd_net -net Net1 [get_bd_ports resetn] [get_bd_pins ahb_master_0/hresetn] [get_bd_pins ahb_master_1/hresetn] [get_bd_pins ahb_master_2/hresetn] [get_bd_pins ahb_slave_0/hresetn] [get_bd_pins ahb_slave_1/hresetn] [get_bd_pins ahb_slave_2/hresetn] [get_bd_pins arbiter_0/hresetn]
+  connect_bd_net -net Net [get_bd_ports clk] [get_bd_pins ahb_master_0/hclk] [get_bd_pins ahb_slave_0/hclk] [get_bd_pins ahb_slave_1/hclk] [get_bd_pins arbiter_0/hclk] [get_bd_pins arbiter_1/hclk]
+  connect_bd_net -net Net1 [get_bd_ports resetn] [get_bd_pins ahb_master_0/hresetn] [get_bd_pins ahb_slave_0/hresetn] [get_bd_pins ahb_slave_1/hresetn] [get_bd_pins arbiter_0/hresetn] [get_bd_pins arbiter_1/hresetn]
   connect_bd_net -net addr1_1 [get_bd_ports addr1] [get_bd_pins ahb_master_0/addr]
-  connect_bd_net -net addr2_1 [get_bd_ports addr2] [get_bd_pins ahb_master_1/addr]
-  connect_bd_net -net addr3_1 [get_bd_ports addr3] [get_bd_pins ahb_master_2/addr]
   connect_bd_net -net ahb_master_0_dout [get_bd_ports dout1] [get_bd_pins ahb_master_0/dout]
   connect_bd_net -net ahb_master_0_haddr [get_bd_pins ahb_master_0/haddr] [get_bd_pins write_mux_0/haddr_1]
-  connect_bd_net -net ahb_master_0_hburst [get_bd_pins ahb_master_0/hburst] [get_bd_pins ahb_slave_0/hburst] [get_bd_pins ahb_slave_1/hburst] [get_bd_pins ahb_slave_2/hburst]
+  connect_bd_net -net ahb_master_0_hburst [get_bd_pins ahb_master_0/hburst] [get_bd_pins ahb_slave_0/hburst]
   connect_bd_net -net ahb_master_0_hready [get_bd_pins ahb_master_0/hready] [get_bd_pins write_mux_0/hready_1]
   connect_bd_net -net ahb_master_0_hreq [get_bd_pins ahb_master_0/hreq] [get_bd_pins arbiter_0/hreq_1]
   connect_bd_net -net ahb_master_0_hwdata [get_bd_pins ahb_master_0/hwdata] [get_bd_pins write_mux_0/hwdata_1]
   connect_bd_net -net ahb_master_0_hwrite [get_bd_pins ahb_master_0/hwrite] [get_bd_pins write_mux_0/hwrite_1]
   connect_bd_net -net ahb_master_0_sel [get_bd_pins ahb_master_0/sel] [get_bd_pins arbiter_0/sel_1]
-  connect_bd_net -net ahb_master_1_dout [get_bd_ports dout2] [get_bd_pins ahb_master_1/dout]
-  connect_bd_net -net ahb_master_1_haddr [get_bd_pins ahb_master_1/haddr] [get_bd_pins write_mux_0/haddr_2]
-  connect_bd_net -net ahb_master_1_hready [get_bd_pins ahb_master_1/hready] [get_bd_pins write_mux_0/hready_2]
-  connect_bd_net -net ahb_master_1_hreq [get_bd_pins ahb_master_1/hreq] [get_bd_pins arbiter_0/hreq_2]
-  connect_bd_net -net ahb_master_1_hwdata [get_bd_pins ahb_master_1/hwdata] [get_bd_pins write_mux_0/hwdata_2]
-  connect_bd_net -net ahb_master_1_hwrite [get_bd_pins ahb_master_1/hwrite] [get_bd_pins write_mux_0/hwrite_2]
-  connect_bd_net -net ahb_master_1_sel [get_bd_pins ahb_master_1/sel] [get_bd_pins arbiter_0/sel_2]
-  connect_bd_net -net ahb_master_2_dout [get_bd_ports dout3] [get_bd_pins ahb_master_2/dout]
-  connect_bd_net -net ahb_master_2_haddr [get_bd_pins ahb_master_2/haddr] [get_bd_pins write_mux_0/haddr_3]
-  connect_bd_net -net ahb_master_2_hready [get_bd_pins ahb_master_2/hready] [get_bd_pins write_mux_0/hready_3]
-  connect_bd_net -net ahb_master_2_hreq [get_bd_pins ahb_master_2/hreq] [get_bd_pins arbiter_0/hreq_3]
-  connect_bd_net -net ahb_master_2_hwdata [get_bd_pins ahb_master_2/hwdata] [get_bd_pins write_mux_0/hwdata_3]
-  connect_bd_net -net ahb_master_2_hwrite [get_bd_pins ahb_master_2/hwrite] [get_bd_pins write_mux_0/hwrite_3]
-  connect_bd_net -net ahb_master_2_sel [get_bd_pins ahb_master_2/sel] [get_bd_pins arbiter_0/sel_3]
   connect_bd_net -net ahb_slave_0_hrdata [get_bd_pins ahb_slave_0/hrdata] [get_bd_pins multiplexor_0/hrdata1]
   connect_bd_net -net ahb_slave_0_hreadyout [get_bd_pins ahb_slave_0/hreadyout] [get_bd_pins multiplexor_0/hreadyout1]
   connect_bd_net -net ahb_slave_0_hresp [get_bd_pins ahb_slave_0/hresp] [get_bd_pins multiplexor_0/hresp1]
-  connect_bd_net -net ahb_slave_1_hrdata [get_bd_pins ahb_slave_1/hrdata] [get_bd_pins multiplexor_0/hrdata2]
-  connect_bd_net -net ahb_slave_1_hreadyout [get_bd_pins ahb_slave_1/hreadyout] [get_bd_pins multiplexor_0/hreadyout2]
-  connect_bd_net -net ahb_slave_1_hresp [get_bd_pins ahb_slave_1/hresp] [get_bd_pins multiplexor_0/hresp2]
-  connect_bd_net -net ahb_slave_2_hrdata [get_bd_pins ahb_slave_2/hrdata] [get_bd_pins multiplexor_0/hrdata3]
-  connect_bd_net -net ahb_slave_2_hreadyout [get_bd_pins ahb_slave_2/hreadyout] [get_bd_pins multiplexor_0/hreadyout3]
-  connect_bd_net -net ahb_slave_2_hresp [get_bd_pins ahb_slave_2/hresp] [get_bd_pins multiplexor_0/hresp3]
+  connect_bd_net -net ahb_slave_1_hrdata [get_bd_pins ahb_slave_1/hrdata] [get_bd_pins multiplexor_1/hrdata1]
+  connect_bd_net -net ahb_slave_1_hreadyout [get_bd_pins ahb_slave_1/hreadyout] [get_bd_pins multiplexor_1/hreadyout1]
+  connect_bd_net -net ahb_slave_1_hresp [get_bd_pins ahb_slave_1/hresp] [get_bd_pins multiplexor_1/hresp1]
   connect_bd_net -net arbiter_0_hgrant_1 [get_bd_pins ahb_master_0/hgrant] [get_bd_pins arbiter_0/hgrant_1] [get_bd_pins write_mux_0/hgrant_1]
-  connect_bd_net -net arbiter_0_hgrant_2 [get_bd_pins ahb_master_1/hgrant] [get_bd_pins arbiter_0/hgrant_2] [get_bd_pins write_mux_0/hgrant_2]
-  connect_bd_net -net arbiter_0_hgrant_3 [get_bd_pins ahb_master_2/hgrant] [get_bd_pins arbiter_0/hgrant_3] [get_bd_pins write_mux_0/hgrant_3]
-  connect_bd_net -net arbiter_0_sel [get_bd_pins arbiter_0/sel] [get_bd_pins decoder_0/sel] [get_bd_pins multiplexor_0/sel]
+  connect_bd_net -net arbiter_0_hreqb [get_bd_pins arbiter_0/hreqb] [get_bd_pins bridge_0/hreq_in_l]
+  connect_bd_net -net arbiter_0_sel [get_bd_pins arbiter_0/sel] [get_bd_pins bridge_0/slave_sel_in_l] [get_bd_pins decoder_0/sel] [get_bd_pins multiplexor_0/sel]
+  connect_bd_net -net arbiter_1_hgrant_1 [get_bd_pins arbiter_1/hgrant_1] [get_bd_pins bridge_0/hgrant_in_r]
+  connect_bd_net -net arbiter_1_sel [get_bd_pins arbiter_1/sel] [get_bd_pins decoder_1/sel] [get_bd_pins multiplexor_1/sel]
+  connect_bd_net -net bridge_0_haddr_out_r [get_bd_pins bridge_0/haddr_out_r] [get_bd_pins write_mux_1/haddr_1]
+  connect_bd_net -net bridge_0_hgrant_out_l [get_bd_pins arbiter_0/hgrantb] [get_bd_pins bridge_0/hgrant_out_l] [get_bd_pins write_mux_1/hgrant_1]
+  connect_bd_net -net bridge_0_hrdata_out_l [get_bd_pins bridge_0/hrdata_out_l] [get_bd_pins multiplexor_0/hrdata2]
+  connect_bd_net -net bridge_0_hready_out_r [get_bd_pins bridge_0/hready_out_r] [get_bd_pins write_mux_1/hready_1]
+  connect_bd_net -net bridge_0_hreadyout_out_l [get_bd_pins bridge_0/hreadyout_out_l] [get_bd_pins multiplexor_0/hreadyout2]
+  connect_bd_net -net bridge_0_hreq_out_r [get_bd_pins arbiter_1/hreq_1] [get_bd_pins bridge_0/hreq_out_r]
+  connect_bd_net -net bridge_0_hresp_out_l [get_bd_pins bridge_0/hresp_out_l] [get_bd_pins multiplexor_0/hresp2]
+  connect_bd_net -net bridge_0_hwdata_out_r [get_bd_pins bridge_0/hwdata_out_r] [get_bd_pins write_mux_1/hwdata_1]
+  connect_bd_net -net bridge_0_hwrite_out_r [get_bd_pins bridge_0/hwrite_out_r] [get_bd_pins write_mux_1/hwrite_1]
+  connect_bd_net -net bridge_0_slave_sel_out_r [get_bd_pins arbiter_1/sel_1] [get_bd_pins bridge_0/slave_sel_out_r]
   connect_bd_net -net decoder_0_hsel_1 [get_bd_pins ahb_slave_0/hsel] [get_bd_pins decoder_0/hsel_1]
-  connect_bd_net -net decoder_0_hsel_2 [get_bd_pins ahb_slave_1/hsel] [get_bd_pins decoder_0/hsel_2]
-  connect_bd_net -net decoder_0_hsel_3 [get_bd_pins ahb_slave_2/hsel] [get_bd_pins decoder_0/hsel_3]
+  connect_bd_net -net decoder_0_hsel_2 [get_bd_pins bridge_0/sel_l] [get_bd_pins decoder_0/hsel_2]
+  connect_bd_net -net decoder_1_hsel_1 [get_bd_pins ahb_slave_1/hsel] [get_bd_pins decoder_1/hsel_1]
   connect_bd_net -net din1_1 [get_bd_ports din1] [get_bd_pins ahb_master_0/din]
-  connect_bd_net -net din2_1 [get_bd_ports din2] [get_bd_pins ahb_master_1/din]
-  connect_bd_net -net din3_1 [get_bd_ports din3] [get_bd_pins ahb_master_2/din]
   connect_bd_net -net enable1_1 [get_bd_ports enable1] [get_bd_pins ahb_master_0/enable]
-  connect_bd_net -net enable2_1 [get_bd_ports enable2] [get_bd_pins ahb_master_1/enable]
-  connect_bd_net -net enable3_1 [get_bd_ports enable3] [get_bd_pins ahb_master_2/enable]
-  connect_bd_net -net multiplexor_0_hrdata [get_bd_pins ahb_master_0/hrdata] [get_bd_pins ahb_master_1/hrdata] [get_bd_pins ahb_master_2/hrdata] [get_bd_pins multiplexor_0/hrdata]
+  connect_bd_net -net multiplexor_0_hrdata [get_bd_pins ahb_master_0/hrdata] [get_bd_pins multiplexor_0/hrdata]
   connect_bd_net -net multiplexor_0_hreadyout [get_bd_pins arbiter_0/hready_out] [get_bd_pins multiplexor_0/hreadyout]
-  connect_bd_net -net multiplexor_0_hresp1 [get_bd_pins arbiter_0/hresp] [get_bd_pins multiplexor_0/hresp]
+  connect_bd_net -net multiplexor_0_hresp [get_bd_pins arbiter_0/hresp] [get_bd_pins multiplexor_0/hresp]
+  connect_bd_net -net multiplexor_1_hrdata [get_bd_pins bridge_0/hrdata_in_r] [get_bd_pins multiplexor_1/hrdata]
+  connect_bd_net -net multiplexor_1_hreadyout [get_bd_pins arbiter_1/hready_out] [get_bd_pins bridge_0/hreadyout_in_r] [get_bd_pins multiplexor_1/hreadyout]
+  connect_bd_net -net multiplexor_1_hresp [get_bd_pins arbiter_1/hresp] [get_bd_pins bridge_0/hresp_in_r] [get_bd_pins multiplexor_1/hresp]
   connect_bd_net -net slave_sel1_1 [get_bd_ports slave_sel1] [get_bd_pins ahb_master_0/slave_sel]
-  connect_bd_net -net slave_sel2_1 [get_bd_ports slave_sel2] [get_bd_pins ahb_master_1/slave_sel]
-  connect_bd_net -net slave_sel3_1 [get_bd_ports slave_sel3] [get_bd_pins ahb_master_2/slave_sel]
   connect_bd_net -net wcontrol1_1 [get_bd_ports wcontrol1] [get_bd_pins ahb_master_0/wr]
-  connect_bd_net -net wcontrol2_1 [get_bd_ports wcontrol2] [get_bd_pins ahb_master_1/wr]
-  connect_bd_net -net wcontrol3_1 [get_bd_ports wcontrol3] [get_bd_pins ahb_master_2/wr]
-  connect_bd_net -net write_mux_0_haddr [get_bd_pins ahb_slave_0/haddr] [get_bd_pins ahb_slave_1/haddr] [get_bd_pins ahb_slave_2/haddr] [get_bd_pins write_mux_0/haddr]
-  connect_bd_net -net write_mux_0_hready [get_bd_pins ahb_slave_0/hready] [get_bd_pins ahb_slave_1/hready] [get_bd_pins ahb_slave_2/hready] [get_bd_pins arbiter_0/hready] [get_bd_pins write_mux_0/hready]
-  connect_bd_net -net write_mux_0_hwdata [get_bd_pins ahb_slave_0/hwdata] [get_bd_pins ahb_slave_1/hwdata] [get_bd_pins ahb_slave_2/hwdata] [get_bd_pins write_mux_0/hwdata]
-  connect_bd_net -net write_mux_0_hwrite [get_bd_pins ahb_slave_0/hwrite] [get_bd_pins ahb_slave_1/hwrite] [get_bd_pins ahb_slave_2/hwrite] [get_bd_pins write_mux_0/hwrite]
+  connect_bd_net -net write_mux_0_haddr [get_bd_pins ahb_slave_0/haddr] [get_bd_pins bridge_0/haddr_in_l] [get_bd_pins write_mux_0/haddr]
+  connect_bd_net -net write_mux_0_hready [get_bd_pins ahb_slave_0/hready] [get_bd_pins arbiter_0/hready] [get_bd_pins bridge_0/hready_in_l] [get_bd_pins write_mux_0/hready]
+  connect_bd_net -net write_mux_0_hwdata [get_bd_pins ahb_slave_0/hwdata] [get_bd_pins bridge_0/hwdata_in_l] [get_bd_pins write_mux_0/hwdata]
+  connect_bd_net -net write_mux_0_hwrite [get_bd_pins ahb_slave_0/hwrite] [get_bd_pins bridge_0/hwrite_in_l] [get_bd_pins write_mux_0/hwrite]
+  connect_bd_net -net write_mux_1_haddr [get_bd_pins ahb_slave_1/haddr] [get_bd_pins write_mux_1/haddr]
+  connect_bd_net -net write_mux_1_hready [get_bd_pins ahb_slave_1/hready] [get_bd_pins arbiter_1/hready] [get_bd_pins write_mux_1/hready]
+  connect_bd_net -net write_mux_1_hwdata [get_bd_pins ahb_slave_1/hwdata] [get_bd_pins write_mux_1/hwdata]
+  connect_bd_net -net write_mux_1_hwrite [get_bd_pins ahb_slave_1/hwrite] [get_bd_pins write_mux_1/hwrite]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins ahb_slave_1/hburst] [get_bd_pins xlconstant_0/dout]
 
   # Create address segments
 
