@@ -225,9 +225,9 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_LOW} \
  ] $resetn
-  set slave_sel1 [ create_bd_port -dir I -from 1 -to 0 slave_sel1 ]
-  set slave_sel2 [ create_bd_port -dir I -from 1 -to 0 slave_sel2 ]
-  set slave_sel3 [ create_bd_port -dir I -from 1 -to 0 slave_sel3 ]
+  set slave_sel1 [ create_bd_port -dir I -from 3 -to 0 -type data slave_sel1 ]
+  set slave_sel2 [ create_bd_port -dir I -from 3 -to 0 -type data slave_sel2 ]
+  set slave_sel3 [ create_bd_port -dir I -from 3 -to 0 -type data slave_sel3 ]
   set wcontrol1 [ create_bd_port -dir I wcontrol1 ]
   set wcontrol2 [ create_bd_port -dir I wcontrol2 ]
   set wcontrol3 [ create_bd_port -dir I wcontrol3 ]
