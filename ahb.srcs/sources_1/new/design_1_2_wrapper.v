@@ -1,15 +1,26 @@
-//Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-//--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
-//Date        : Thu Mar 23 19:23:25 2023
-//Host        : ransara-X510UNR running 64-bit Ubuntu 22.04.2 LTS
-//Command     : generate_target design_1_wrapper.bd
-//Design      : design_1_wrapper
-//Purpose     : IP block netlist
-//--------------------------------------------------------------------------------
-`timescale 1 ps / 1 ps
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 03/23/2023 07:36:48 PM
+// Design Name: 
+// Module Name: design_1_2_wrapper
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
 
-module design_1_wrapper
+
+module design_1_2_wrapper
    (addr1,
     addr2,
     addr3,
@@ -72,7 +83,7 @@ module design_1_wrapper
   wire wcontrol2;
   wire wcontrol3;
 
-  design_1 design_1_i
+  design_1_2 design_1_2_i
        (.addr1(addr1),
         .addr2(addr2),
         .addr3(addr3),
