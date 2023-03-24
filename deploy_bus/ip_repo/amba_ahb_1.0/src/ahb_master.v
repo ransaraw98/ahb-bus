@@ -127,7 +127,6 @@ always@(posedge hclk, negedge hresetn) begin
     hwdata <= 32'h0000_0000;
     dout <= 32'h0000_0000;
     hreq <=0;
-    next_state <= idle;
   end
   else begin
     case(next_state)

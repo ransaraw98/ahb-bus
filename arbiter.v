@@ -158,7 +158,7 @@ always @(posedge hclk, negedge hresetn) begin
         hgrant_3 <= 0;
         sel <= 4'b0000;
         hreqb <= 0;
-        next_state <= IDLE;
+        
     end
 	else begin
     case(next_state)		

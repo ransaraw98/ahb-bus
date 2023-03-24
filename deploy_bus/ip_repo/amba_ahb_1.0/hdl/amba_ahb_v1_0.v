@@ -14,12 +14,11 @@
 	)
 	(
 		// Users to add ports here
-        output reg [31 : 0] dout1,
-        output reg [31 : 0] dout2,
-        output reg [31 : 0] dout3,
+        output reg [31:0] dout1,
+        output reg [31:0] dout2,
+        output reg [31:0] dout3,
         input wire clk,
         input wire resetn,
-        output wire test,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
