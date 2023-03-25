@@ -325,7 +325,8 @@ always @(posedge hclk, negedge hresetn) begin
       idle: begin
         hreadyout <= 1'b0;
         hresp <= 1'b0;
-        hrdata <= 32'h0000_0000;
+        //hrdata <= 32'h0000_0000;
+        hrdata <= hrdata;
         //waddr <= waddr;
         //raddr <= raddr;
       end

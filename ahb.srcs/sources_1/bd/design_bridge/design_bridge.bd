@@ -9,18 +9,18 @@
     },
     "design_tree": {
       "decoder_0": "",
-      "ahb_slave_0": "",
-      "ahb_slave_1": "",
       "decoder_1": "",
       "xlconstant_0": "",
-      "multiplexor_0": "",
       "write_mux_0": "",
       "write_mux_1": "",
-      "multiplexor_1": "",
       "bridge_0": "",
-      "ahb_master_0": "",
       "arbiter_0": "",
-      "arbiter_1": ""
+      "arbiter_1": "",
+      "multiplexor_0": "",
+      "ahb_slave_0": "",
+      "ahb_slave_1": "",
+      "multiplexor_1": "",
+      "ahb_master_0": ""
     },
     "ports": {
       "enable1": {
@@ -91,110 +91,6 @@
           }
         }
       },
-      "ahb_slave_0": {
-        "vlnv": "xilinx.com:module_ref:ahb_slave:1.0",
-        "xci_name": "design_bridge_ahb_slave_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ahb_slave",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hclk": {
-            "direction": "I"
-          },
-          "hresetn": {
-            "direction": "I"
-          },
-          "hsel": {
-            "direction": "I"
-          },
-          "haddr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hwrite": {
-            "direction": "I"
-          },
-          "hburst": {
-            "direction": "I",
-            "left": "2",
-            "right": "0"
-          },
-          "hready": {
-            "direction": "I"
-          },
-          "hwdata": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout": {
-            "direction": "O"
-          },
-          "hresp": {
-            "direction": "O"
-          },
-          "hrdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
-      "ahb_slave_1": {
-        "vlnv": "xilinx.com:module_ref:ahb_slave:1.0",
-        "xci_name": "design_bridge_ahb_slave_0_1",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ahb_slave",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hclk": {
-            "direction": "I"
-          },
-          "hresetn": {
-            "direction": "I"
-          },
-          "hsel": {
-            "direction": "I"
-          },
-          "haddr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hwrite": {
-            "direction": "I"
-          },
-          "hburst": {
-            "direction": "I",
-            "left": "2",
-            "right": "0"
-          },
-          "hready": {
-            "direction": "I"
-          },
-          "hwdata": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout": {
-            "direction": "O"
-          },
-          "hresp": {
-            "direction": "O"
-          },
-          "hrdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
       "decoder_1": {
         "vlnv": "xilinx.com:module_ref:decoder:1.0",
         "xci_name": "design_bridge_decoder_0_1",
@@ -229,66 +125,6 @@
           },
           "CONST_WIDTH": {
             "value": "3"
-          }
-        }
-      },
-      "multiplexor_0": {
-        "vlnv": "xilinx.com:module_ref:multiplexor:1.0",
-        "xci_name": "design_bridge_multiplexor_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "multiplexor",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hrdata1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hrdata2": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hrdata3": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout1": {
-            "direction": "I"
-          },
-          "hreadyout2": {
-            "direction": "I"
-          },
-          "hreadyout3": {
-            "direction": "I"
-          },
-          "hresp1": {
-            "direction": "I"
-          },
-          "hresp2": {
-            "direction": "I"
-          },
-          "hresp3": {
-            "direction": "I"
-          },
-          "sel": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "hrdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout": {
-            "direction": "O"
-          },
-          "hresp": {
-            "direction": "O"
           }
         }
       },
@@ -460,66 +296,6 @@
           }
         }
       },
-      "multiplexor_1": {
-        "vlnv": "xilinx.com:module_ref:multiplexor:1.0",
-        "xci_name": "design_bridge_multiplexor_0_1",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "multiplexor",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hrdata1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hrdata2": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hrdata3": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout1": {
-            "direction": "I"
-          },
-          "hreadyout2": {
-            "direction": "I"
-          },
-          "hreadyout3": {
-            "direction": "I"
-          },
-          "hresp1": {
-            "direction": "I"
-          },
-          "hresp2": {
-            "direction": "I"
-          },
-          "hresp3": {
-            "direction": "I"
-          },
-          "sel": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "hrdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hreadyout": {
-            "direction": "O"
-          },
-          "hresp": {
-            "direction": "O"
-          }
-        }
-      },
       "bridge_0": {
         "vlnv": "xilinx.com:module_ref:bridge:1.0",
         "xci_name": "design_bridge_bridge_0_0",
@@ -606,86 +382,6 @@
             "right": "0"
           },
           "hgrant_out_l": {
-            "direction": "O"
-          }
-        }
-      },
-      "ahb_master_0": {
-        "vlnv": "xilinx.com:module_ref:ahb_master:1.0",
-        "xci_name": "design_bridge_ahb_master_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ahb_master",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hclk": {
-            "direction": "I"
-          },
-          "hresetn": {
-            "direction": "I"
-          },
-          "enable": {
-            "direction": "I"
-          },
-          "din": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "wr": {
-            "direction": "I"
-          },
-          "hrdata": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "slave_sel": {
-            "direction": "I",
-            "left": "3",
-            "right": "0"
-          },
-          "hgrant": {
-            "direction": "I"
-          },
-          "sel": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "haddr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hwrite": {
-            "direction": "O"
-          },
-          "hburst": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "hready": {
-            "direction": "O"
-          },
-          "hwdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "dout": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hreq": {
             "direction": "O"
           }
         }
@@ -829,6 +525,310 @@
             "right": "0"
           }
         }
+      },
+      "multiplexor_0": {
+        "vlnv": "xilinx.com:module_ref:multiplexor:1.0",
+        "xci_name": "design_bridge_multiplexor_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "multiplexor",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hrdata1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hrdata2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hrdata3": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout1": {
+            "direction": "I"
+          },
+          "hreadyout2": {
+            "direction": "I"
+          },
+          "hreadyout3": {
+            "direction": "I"
+          },
+          "hresp1": {
+            "direction": "I"
+          },
+          "hresp2": {
+            "direction": "I"
+          },
+          "hresp3": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "hrdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout": {
+            "direction": "O"
+          },
+          "hresp": {
+            "direction": "O"
+          }
+        }
+      },
+      "ahb_slave_0": {
+        "vlnv": "xilinx.com:module_ref:ahb_slave:1.0",
+        "xci_name": "design_bridge_ahb_slave_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ahb_slave",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hclk": {
+            "direction": "I"
+          },
+          "hresetn": {
+            "direction": "I"
+          },
+          "hsel": {
+            "direction": "I"
+          },
+          "haddr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hwrite": {
+            "direction": "I"
+          },
+          "hburst": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "hready": {
+            "direction": "I"
+          },
+          "hwdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout": {
+            "direction": "O"
+          },
+          "hresp": {
+            "direction": "O"
+          },
+          "hrdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "ahb_slave_1": {
+        "vlnv": "xilinx.com:module_ref:ahb_slave:1.0",
+        "xci_name": "design_bridge_ahb_slave_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ahb_slave",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hclk": {
+            "direction": "I"
+          },
+          "hresetn": {
+            "direction": "I"
+          },
+          "hsel": {
+            "direction": "I"
+          },
+          "haddr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hwrite": {
+            "direction": "I"
+          },
+          "hburst": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "hready": {
+            "direction": "I"
+          },
+          "hwdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout": {
+            "direction": "O"
+          },
+          "hresp": {
+            "direction": "O"
+          },
+          "hrdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "multiplexor_1": {
+        "vlnv": "xilinx.com:module_ref:multiplexor:1.0",
+        "xci_name": "design_bridge_multiplexor_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "multiplexor",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hrdata1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hrdata2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hrdata3": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout1": {
+            "direction": "I"
+          },
+          "hreadyout2": {
+            "direction": "I"
+          },
+          "hreadyout3": {
+            "direction": "I"
+          },
+          "hresp1": {
+            "direction": "I"
+          },
+          "hresp2": {
+            "direction": "I"
+          },
+          "hresp3": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "hrdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hreadyout": {
+            "direction": "O"
+          },
+          "hresp": {
+            "direction": "O"
+          }
+        }
+      },
+      "ahb_master_0": {
+        "vlnv": "xilinx.com:module_ref:ahb_master:1.0",
+        "xci_name": "design_bridge_ahb_master_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ahb_master",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hclk": {
+            "direction": "I"
+          },
+          "hresetn": {
+            "direction": "I"
+          },
+          "enable": {
+            "direction": "I"
+          },
+          "din": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "wr": {
+            "direction": "I"
+          },
+          "hrdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "slave_sel": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "hgrant": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "haddr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hwrite": {
+            "direction": "O"
+          },
+          "hburst": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "hready": {
+            "direction": "O"
+          },
+          "hwdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "dout": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hreq": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -842,8 +842,8 @@
         "ports": [
           "arbiter_0/sel",
           "decoder_0/sel",
-          "multiplexor_0/sel",
-          "bridge_0/slave_sel_in_l"
+          "bridge_0/slave_sel_in_l",
+          "multiplexor_0/sel"
         ]
       },
       "arbiter_0_hgrant_1": {
@@ -856,21 +856,21 @@
       "Net": {
         "ports": [
           "clk",
+          "arbiter_0/hclk",
+          "arbiter_1/hclk",
           "ahb_slave_0/hclk",
           "ahb_slave_1/hclk",
-          "ahb_master_0/hclk",
-          "arbiter_0/hclk",
-          "arbiter_1/hclk"
+          "ahb_master_0/hclk"
         ]
       },
       "Net1": {
         "ports": [
           "resetn",
+          "arbiter_0/hresetn",
+          "arbiter_1/hresetn",
           "ahb_slave_0/hresetn",
           "ahb_slave_1/hresetn",
-          "ahb_master_0/hresetn",
-          "arbiter_0/hresetn",
-          "arbiter_1/hresetn"
+          "ahb_master_0/hresetn"
         ]
       },
       "decoder_0_hsel_2": {
@@ -936,16 +936,16 @@
       "write_mux_0_haddr": {
         "ports": [
           "write_mux_0/haddr",
-          "ahb_slave_0/haddr",
-          "bridge_0/haddr_in_l"
+          "bridge_0/haddr_in_l",
+          "ahb_slave_0/haddr"
         ]
       },
       "write_mux_0_hready": {
         "ports": [
           "write_mux_0/hready",
-          "ahb_slave_0/hready",
           "bridge_0/hready_in_l",
-          "arbiter_0/hready"
+          "arbiter_0/hready",
+          "ahb_slave_0/hready"
         ]
       },
       "ahb_master_0_hready": {
@@ -975,15 +975,15 @@
       "write_mux_0_hwdata": {
         "ports": [
           "write_mux_0/hwdata",
-          "ahb_slave_0/hwdata",
-          "bridge_0/hwdata_in_l"
+          "bridge_0/hwdata_in_l",
+          "ahb_slave_0/hwdata"
         ]
       },
       "write_mux_0_hwrite": {
         "ports": [
           "write_mux_0/hwrite",
-          "ahb_slave_0/hwrite",
-          "bridge_0/hwrite_in_l"
+          "bridge_0/hwrite_in_l",
+          "ahb_slave_0/hwrite"
         ]
       },
       "ahb_master_0_hburst": {
@@ -1081,8 +1081,8 @@
       "write_mux_1_hready": {
         "ports": [
           "write_mux_1/hready",
-          "ahb_slave_1/hready",
-          "arbiter_1/hready"
+          "arbiter_1/hready",
+          "ahb_slave_1/hready"
         ]
       },
       "ahb_slave_1_hreadyout": {
