@@ -17,6 +17,7 @@
         output reg [31:0] dout1,
         output reg [31:0] dout2,
         output reg [31:0] dout3,
+        output reg [31:0] hrdata_debug,
         input wire clk,
         input wire resetn,
 		// User ports ends
@@ -49,6 +50,7 @@
 	wire [31:0] dout1_wire;
 	wire [31:0] dout2_wire;
 	wire [31:0] dout3_wire;
+	wire [31:0] hrdata_debug_wire;
 // Instantiation of Axi Bus Interface S_AXI
 	amba_ahb_v1_0_S_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S_AXI_DATA_WIDTH),
@@ -57,8 +59,9 @@
 	    .dout1(dout1_wire),
 		.dout2(dout2_wire),
 		.dout3(dout3_wire),
-		//.clk(clk),
-		//.resetn(resetn),
+		.clk(clk),
+		.resetn(resetn),
+	    .hrdata_debug(hrdata_debug_wire),
 		.S_AXI_ACLK(s_axi_aclk),
 		.S_AXI_ARESETN(s_axi_aresetn),
 		.S_AXI_AWADDR(s_axi_awaddr),
@@ -88,6 +91,7 @@
         dout1 = dout1_wire;
         dout2 = dout2_wire;
         dout3 = dout3_wire;
+        hrdata_debug = hrdata_debug_wire;
     end
 	// User logic ends
 

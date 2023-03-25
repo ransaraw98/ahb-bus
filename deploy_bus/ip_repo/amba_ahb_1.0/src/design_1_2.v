@@ -21,6 +21,7 @@ module design_2
   output reg [31:0]dout1,
   output reg [31:0]dout2,
   output reg [31:0]dout3,
+  output reg [31:0] hrdata_debug,
   input enable1,
   input enable2,
   input enable3,
@@ -119,10 +120,13 @@ module design_2
   assign wcontrol3_1 = wcontrol3;
   
   */
+   
+  
   always@(*)begin
-  dout1[31:0] = ahb_master_0_dout;
-  dout2[31:0] = ahb_master_1_dout;
-  dout3[31:0] = ahb_master_2_dout;
+  dout1[31:0]           =   ahb_master_0_dout;
+  dout2[31:0]           =   ahb_master_1_dout;
+  dout3[31:0]           =   ahb_master_2_dout;
+  hrdata_debug[31:0]    =   multiplexor_0_hrdata;
   
   end
   ahb_master ahb_master_0

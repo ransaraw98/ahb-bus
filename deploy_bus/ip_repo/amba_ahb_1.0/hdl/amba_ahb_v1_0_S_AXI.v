@@ -17,8 +17,9 @@
         output reg [31:0] dout1,
         output reg [31:0] dout2,
         output reg [31:0] dout3,
-        //input wire clk,
-        //input wire resetn,
+        output reg [31:0] hrdata_debug,
+        input wire clk,
+        input wire resetn,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -537,32 +538,71 @@
 	wire [31:0] dout2_wire;
 	wire [31:0] dout3_wire;
 	
+	//register wires
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg0_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg1_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg2_w;
+	wire  [C_S_AXI_DATA_WIDTH-1:0]	slv_reg3_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg4_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg5_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg6_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg7_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg8_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg9_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg10_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg11_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg12_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg13_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg14_w;
+	wire [C_S_AXI_DATA_WIDTH-1:0]	slv_reg15_w;
+	
+	wire [31:0] hrdata_debug_wire;
 	always@(*)begin
-	    dout1 = dout1_wire;
-	    dout2 = dout2_wire;
-	    dout3 = dout3_wire; 
+	    dout1          = dout1_wire;
+	    dout2          = dout2_wire;
+	    dout3          = dout3_wire;
+	    hrdata_debug   = hrdata_debug_wire; 
 	end
+	
+	assign     slv_reg0_w  =   slv_reg0;
+	assign     slv_reg1_w  =   slv_reg1;
+	assign     slv_reg2_w  =   slv_reg2;
+	assign     slv_reg3_w  =   slv_reg3;
+	assign     slv_reg4_w  =   slv_reg4;
+	assign     slv_reg5_w  =   slv_reg5;
+	assign     slv_reg6_w  =   slv_reg6;
+	assign     slv_reg7_w  =   slv_reg7;
+	assign     slv_reg8_w  =   slv_reg8;
+	assign     slv_reg9_w  =   slv_reg9;
+	assign     slv_reg10_w =   slv_reg10;
+	assign     slv_reg11_w =   slv_reg11;
+	assign     slv_reg12_w =   slv_reg12;
+	assign     slv_reg13_w =   slv_reg13;
+	assign     slv_reg14_w =   slv_reg14;
+	assign	   slv_reg15_w =   slv_reg15;
+	
       design_2 custom_logic
-       (.addr1(slv_reg0),
-        .addr2(slv_reg1),
-        .addr3(slv_reg2),
-        .clk(S_AXI_ACLK),
-        .din1(slv_reg3),
-        .din2(slv_reg4),
-        .din3(slv_reg5),
+       (.addr1(slv_reg0_w),
+        .addr2(slv_reg1_w),
+        .addr3(slv_reg2_w),
+        .clk(clk),
+        .din1(slv_reg3_w),
+        .din2(slv_reg4_w),
+        .din3(slv_reg5_w),
         .dout1(dout1_wire),
         .dout2(dout2_wire),
         .dout3(dout3_wire),
-        .enable1(slv_reg9[0]),
-        .enable2(slv_reg9[1]),
-        .enable3(slv_reg9[2]),
-        .resetn(S_AXI_ARESETN),
-        .slave_sel1(slv_reg6),
-        .slave_sel2(slv_reg7),
-        .slave_sel3(slv_reg8),
-        .wcontrol1(slv_reg10),
-        .wcontrol2(slv_reg11),
-        .wcontrol3(slv_reg12)
+        .enable1(slv_reg9_w[0]),
+        .enable2(slv_reg9_w[1]),
+        .enable3(slv_reg9_w[2]),
+        .resetn(resetn),
+        .slave_sel1(slv_reg6_w),
+        .slave_sel2(slv_reg7_w),
+        .slave_sel3(slv_reg8_w),
+        .wcontrol1(slv_reg10_w),
+        .wcontrol2(slv_reg11_w),
+        .wcontrol3(slv_reg12_w),
+        .hrdata_debug(hrdata_debug_wire)
         );
         
 
