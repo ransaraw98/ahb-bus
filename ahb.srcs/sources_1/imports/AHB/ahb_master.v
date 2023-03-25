@@ -42,11 +42,6 @@ module ahb_master(
 //----------------------------------------------------
 
 reg [2:0] state, next_state;
-//wire enable_posedge;
-//reg enable_previous;
-
-//reg enable_posedge;
-
 parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011, s4 = 3'b0100;
 
 
@@ -54,15 +49,12 @@ parameter idle = 3'b000, await = 3'b111, s1 = 3'b001, s2 = 3'b010, s3 = 3'b011, 
 // The state machine
 //----------------------------------------------------
 
-//assign enable_posedge = (enable ==1) && (enable_previous == 0);
-
 always@(posedge hclk, negedge hresetn) begin
   if(!hresetn) begin
     state <= idle;
   end
   else begin
-    state <= next_state;
-    //enable_previous <= enable;
+    state = next_state;
   end
 end
 
@@ -70,7 +62,7 @@ end
 always@(*) begin
   case(state)
     idle: begin
-      if(enable== 1'b1) begin
+      if(enable == 1'b1) begin
         next_state = await;
         end
       /*if(enable ==1)
