@@ -8,7 +8,6 @@
       "tool_version": "2019.1"
     },
     "design_tree": {
-      "ahb_master_0": "",
       "decoder_0": "",
       "ahb_slave_0": "",
       "ahb_slave_1": "",
@@ -19,6 +18,7 @@
       "write_mux_1": "",
       "multiplexor_1": "",
       "bridge_0": "",
+      "ahb_master_0": "",
       "arbiter_0": "",
       "arbiter_1": ""
     },
@@ -66,86 +66,6 @@
       }
     },
     "components": {
-      "ahb_master_0": {
-        "vlnv": "xilinx.com:module_ref:ahb_master:1.0",
-        "xci_name": "design_bridge_ahb_master_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ahb_master",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "hclk": {
-            "direction": "I"
-          },
-          "hresetn": {
-            "direction": "I"
-          },
-          "enable": {
-            "direction": "I"
-          },
-          "din": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "wr": {
-            "direction": "I"
-          },
-          "hrdata": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "slave_sel": {
-            "direction": "I",
-            "left": "3",
-            "right": "0"
-          },
-          "hgrant": {
-            "direction": "I"
-          },
-          "sel": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "haddr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hwrite": {
-            "direction": "O"
-          },
-          "hburst": {
-            "direction": "O",
-            "left": "2",
-            "right": "0"
-          },
-          "hready": {
-            "direction": "O"
-          },
-          "hwdata": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "dout": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "hreq": {
-            "direction": "O"
-          }
-        }
-      },
       "decoder_0": {
         "vlnv": "xilinx.com:module_ref:decoder:1.0",
         "xci_name": "design_bridge_decoder_0_0",
@@ -690,6 +610,86 @@
           }
         }
       },
+      "ahb_master_0": {
+        "vlnv": "xilinx.com:module_ref:ahb_master:1.0",
+        "xci_name": "design_bridge_ahb_master_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ahb_master",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "hclk": {
+            "direction": "I"
+          },
+          "hresetn": {
+            "direction": "I"
+          },
+          "enable": {
+            "direction": "I"
+          },
+          "din": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "wr": {
+            "direction": "I"
+          },
+          "hrdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "slave_sel": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "hgrant": {
+            "direction": "I"
+          },
+          "sel": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "haddr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hwrite": {
+            "direction": "O"
+          },
+          "hburst": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          },
+          "hready": {
+            "direction": "O"
+          },
+          "hwdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "dout": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "hreq": {
+            "direction": "O"
+          }
+        }
+      },
       "arbiter_0": {
         "vlnv": "xilinx.com:module_ref:arbiter:1.0",
         "xci_name": "design_bridge_arbiter_0_0",
@@ -849,16 +849,16 @@
       "arbiter_0_hgrant_1": {
         "ports": [
           "arbiter_0/hgrant_1",
-          "ahb_master_0/hgrant",
-          "write_mux_0/hgrant_1"
+          "write_mux_0/hgrant_1",
+          "ahb_master_0/hgrant"
         ]
       },
       "Net": {
         "ports": [
           "clk",
-          "ahb_master_0/hclk",
           "ahb_slave_0/hclk",
           "ahb_slave_1/hclk",
+          "ahb_master_0/hclk",
           "arbiter_0/hclk",
           "arbiter_1/hclk"
         ]
@@ -866,9 +866,9 @@
       "Net1": {
         "ports": [
           "resetn",
-          "ahb_master_0/hresetn",
           "ahb_slave_0/hresetn",
           "ahb_slave_1/hresetn",
+          "ahb_master_0/hresetn",
           "arbiter_0/hresetn",
           "arbiter_1/hresetn"
         ]

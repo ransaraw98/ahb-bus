@@ -39,7 +39,7 @@ always@(*) begin
       hresp = hresp3;
     end
     default: begin
-      hrdata = 32'hzzzz_zzzz;
+      hrdata = 32'h0000_0000;
       hreadyout = 1'b0;
       hresp = 1'b1;
     end
