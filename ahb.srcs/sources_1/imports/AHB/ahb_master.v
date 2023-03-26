@@ -88,13 +88,15 @@ always@(*) begin
       end
 
     s1: begin
-      if(wr == 1'b1) begin
+      if((enable == 1) && (wr == 1'b1)) begin
         next_state = s2;
       end
-      else if(wr == 1'b0) begin
+      else if((enable == 1) && (wr == 1'b0)) begin
         next_state = s3;
+        end
+      else
+        next_state = s1;
       end
-    end
 
     s2: begin
       if(enable == 1'b1) begin
@@ -108,12 +110,12 @@ always@(*) begin
         next_state = s4;
     end
     s4: begin
-      if(enable == 1'b1) begin
-        next_state = s1;
-      end
-      else begin
+    //  if(enable == 1'b1) begin
+    //    next_state = s1;
+   //   end
+   //   else begin
         next_state = idle;
-      end
+    //  end
     end
     default: begin
       next_state = idle;
@@ -187,7 +189,7 @@ always@(posedge hclk, negedge hresetn) begin
         dout = hrdata;
       end
       s4: begin 
-        sel <= 2'b00;
+        sel <= sel;
         haddr <= addr;
         hwrite <= wr;
         hburst <= 3'b000;

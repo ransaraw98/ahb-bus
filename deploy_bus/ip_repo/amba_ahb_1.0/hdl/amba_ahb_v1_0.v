@@ -20,6 +20,30 @@
         output reg [31:0] hrdata_debug,
         input wire clk,
         input wire resetn,
+        
+        output reg [31:0] d_master1_addr,
+        output reg [31:0] d_master2_addr,
+        output reg [31:0] d_master3_addr,
+  
+        output reg [31:0] d_master1_wdata,  
+        output reg [31:0] d_master2_wdata,
+        output reg [31:0] d_master3_wdata,
+  
+        output reg [3:0]  d_master1_sel,
+        output reg [3:0]  d_master2_sel,
+        output reg [3:0]  d_master3_sel,
+  
+        output reg [3:0]  d_master1_sel_o,
+        output reg [3:0]  d_master2_sel_o,
+        output reg [3:0]  d_master3_sel_o,
+  
+        output reg [31:0] d_slave1_hdata,
+        output reg [31:0] d_slave2_hdata,
+        output reg [31:0] d_slave3_hdata,
+  
+        output reg d_slave1_sel,
+        output reg d_slave2_sel,
+        output reg d_slave3_sel,
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -51,6 +75,29 @@
 	wire [31:0] dout2_wire;
 	wire [31:0] dout3_wire;
 	wire [31:0] hrdata_debug_wire;
+		wire[31:0] d_master1_addr_w;
+    wire[31:0] d_master2_addr_w;
+    wire[31:0] d_master3_addr_w;
+  
+    wire[31:0] d_master1_wdata_w;  
+    wire[31:0] d_master2_wdata_w;
+    wire[31:0] d_master3_wdata_w;
+  
+    wire[3:0]  d_master1_sel_w;
+    wire[3:0]  d_master2_sel_w;
+    wire[3:0]  d_master3_sel_w;
+  
+    wire[3:0]  d_master1_sel_o_w;
+    wire[3:0]  d_master2_sel_o_w;
+    wire[3:0]  d_master3_sel_o_w;
+  
+    wire[31:0] d_slave1_hdata_w;
+    wire[31:0] d_slave2_hdata_w;
+    wire[31:0] d_slave3_hdata_w;
+  
+    wire d_slave1_sel_w;
+    wire d_slave2_sel_w;
+    wire d_slave3_sel_w;
 // Instantiation of Axi Bus Interface S_AXI
 	amba_ahb_v1_0_S_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S_AXI_DATA_WIDTH),
@@ -62,6 +109,33 @@
 		.clk(clk),
 		.resetn(resetn),
 	    .hrdata_debug(hrdata_debug_wire),
+	    
+	    //
+.d_master1_addr(d_master1_addr_w),
+.d_master2_addr(d_master2_addr_w),
+.d_master3_addr(d_master3_addr_w),
+  
+.d_master1_wdata(d_master1_wdata_w),
+.d_master2_wdata(d_master2_wdata_w),
+.d_master3_wdata(d_master3_wdata_w),
+  
+.d_master1_sel(d_master1_sel_w),
+.d_master2_sel(d_master2_sel_w),
+.d_master3_sel(d_master3_sel_w),
+  
+.d_master1_sel_o(d_master1_sel_o_w),
+.d_master2_sel_o(d_master2_sel_o_w),
+.d_master3_sel_o(d_master3_sel_o_w),
+  
+.d_slave1_hdata(d_slave1_hdata_w),
+.d_slave2_hdata(d_slave2_hdata_w),
+.d_slave3_hdata(d_slave3_hdata_w),
+  
+.d_slave1_sel(d_slave1_sel_w),
+.d_slave2_sel(d_slave2_sel_w),
+.d_slave3_sel(d_slave3_sel_w),
+	    
+	    //
 		.S_AXI_ACLK(s_axi_aclk),
 		.S_AXI_ARESETN(s_axi_aresetn),
 		.S_AXI_AWADDR(s_axi_awaddr),
@@ -92,6 +166,30 @@
         dout2 = dout2_wire;
         dout3 = dout3_wire;
         hrdata_debug = hrdata_debug_wire;
+        
+        	    d_master1_addr     = d_master1_addr_w;
+        d_master2_addr     = d_master2_addr_w;
+        d_master3_addr     = d_master3_addr_w;
+  
+        d_master1_wdata     =   d_master1_wdata_w;
+        d_master2_wdata     =   d_master2_wdata_w;
+        d_master3_wdata     =   d_master3_wdata_w;
+  
+        d_master1_sel =     d_master1_sel_w;
+        d_master2_sel =     d_master2_sel_w;
+        d_master3_sel =     d_master3_sel_w;
+  
+        d_master1_sel_o =   d_master1_sel_o_w;
+        d_master2_sel_o =   d_master2_sel_o_w;
+        d_master3_sel_o =   d_master3_sel_o_w;
+  
+        d_slave1_hdata =    d_slave1_hdata_w;
+        d_slave2_hdata =    d_slave2_hdata_w;
+        d_slave3_hdata =    d_slave3_hdata_w;
+  
+        d_slave1_sel =      d_slave1_sel_w;
+        d_slave2_sel =      d_slave2_sel_w;
+        d_slave3_sel =      d_slave3_sel_w;
     end
 	// User logic ends
 

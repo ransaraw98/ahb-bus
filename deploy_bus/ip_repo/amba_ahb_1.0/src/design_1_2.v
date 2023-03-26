@@ -22,6 +22,31 @@ module design_2
   output reg [31:0]dout2,
   output reg [31:0]dout3,
   output reg [31:0] hrdata_debug,
+  
+  output reg [31:0] d_master1_addr,
+  output reg [31:0] d_master2_addr,
+  output reg [31:0] d_master3_addr,
+  
+  output reg [31:0] d_master1_wdata,  
+  output reg [31:0] d_master2_wdata,
+  output reg [31:0] d_master3_wdata,
+  
+  output reg [3:0]  d_master1_sel,
+  output reg [3:0]  d_master2_sel,
+  output reg [3:0]  d_master3_sel,
+  
+  output reg [3:0]  d_master1_sel_o,
+  output reg [3:0]  d_master2_sel_o,
+  output reg [3:0]  d_master3_sel_o,
+  
+  output reg [31:0] d_slave1_hdata,
+  output reg [31:0] d_slave2_hdata,
+  output reg [31:0] d_slave3_hdata,
+  
+  output reg d_slave1_sel,
+  output reg d_slave2_sel,
+  output reg d_slave3_sel,
+  
   input enable1,
   input enable2,
   input enable3,
@@ -127,6 +152,29 @@ module design_2
   dout2[31:0]           =   ahb_master_1_dout;
   dout3[31:0]           =   ahb_master_2_dout;
   hrdata_debug[31:0]    =   multiplexor_0_hrdata;
+  d_master1_addr        =   addr1;
+  d_master2_addr        =   addr2;
+  d_master3_addr        =   addr3;
+  
+  d_master1_wdata       =   ahb_master_0_hwdata;
+  d_master2_wdata       =   ahb_master_1_hwdata;
+  d_master3_wdata       =   ahb_master_2_hwdata;
+  
+  d_master1_sel         =   slave_sel1;
+  d_master2_sel         =   slave_sel2;
+  d_master3_sel         =   slave_sel3;
+  
+  d_master1_sel_o       =   ahb_master_0_sel;
+  d_master2_sel_o       =   ahb_master_1_sel;
+  d_master3_sel_o       =   ahb_master_2_sel;
+  
+  d_slave1_hdata       =   ahb_slave_0_hrdata;
+  d_slave2_hdata       =   ahb_slave_1_hrdata;
+  d_slave3_hdata       =   ahb_slave_2_hrdata;
+  
+  d_slave1_sel          =   decoder_0_hsel_1;
+  d_slave2_sel          =   decoder_0_hsel_2;
+  d_slave3_sel          =   decoder_0_hsel_3;
   
   end
   ahb_master ahb_master_0

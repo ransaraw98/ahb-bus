@@ -179,7 +179,7 @@ always@(posedge hclk, negedge hresetn) begin
         dout = hrdata;
       end
       s4: begin 
-        sel <= 2'b00;
+        sel <= sel;
         haddr <= addr;
         hwrite <= wr;
         hburst <= 3'b000;

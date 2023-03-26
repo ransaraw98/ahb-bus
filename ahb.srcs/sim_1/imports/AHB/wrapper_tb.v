@@ -100,7 +100,7 @@ begin
   #100;
   enable1 = 1'b0;
   wcontrol1 = 1'b0;
-  #40;
+  #80;
 end
 endtask
 
@@ -112,10 +112,10 @@ begin
   din2 = a;
   addr2 = address;
   wcontrol2 = 1'b1;
-  #100;
+  #120;
   enable2 = 1'b0;
   wcontrol2 = 1'b0;
-  #40;
+  #80;
 end
 endtask
 
@@ -127,10 +127,10 @@ begin
   din3 = a;
   addr3 = address;
   wcontrol3 = 1'b1;
-  #100;
+  #120;
   enable3 = 1'b0;
   wcontrol3 = 1'b0;
-  #40;
+  #80;
 end
 endtask
 
@@ -141,10 +141,10 @@ begin
   enable1 = 1'b1;
   addr1 = address;
   wcontrol1 = 1'b0;
-  #80;
+  #120;
   enable1 = 1'b0;
   wcontrol1 = 1'b0;
-  #60;
+  #100;
 end
 endtask
 
@@ -155,10 +155,10 @@ begin
   enable2 = 1'b1;
   addr2 = address;
   wcontrol2 = 1'b0;
-  #80;
+  #120;
   enable2 = 1'b0;
   wcontrol2 = 1'b0;
-  #60;
+  #100;
 end
 endtask
 
@@ -169,10 +169,10 @@ begin
   enable3 = 1'b1;
   addr3 = address;
   wcontrol3 = 1'b0;
-  #80;
+  #120;
   enable3 = 1'b0;
   wcontrol3 = 1'b0;
-  #60;
+  #100;
 end
 endtask
 

@@ -1,6 +1,6 @@
 
 ################################################################
-# This is a generated script based on design: deploy
+# This is a generated script based on design: design_1
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -35,7 +35,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source deploy_script.tcl
+# source design_1_script.tcl
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
@@ -50,7 +50,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name deploy
+set design_name design_1
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -124,10 +124,9 @@ set bCheckIPsPassed 1
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
-user.org:user:amba_ahb:5.0\
+user.org:user:amba_ahb:6.0\
 xilinx.com:ip:processing_system7:5.5\
 xilinx.com:ip:proc_sys_reset:5.0\
-xilinx.com:ip:system_ila:1.1\
 xilinx.com:ip:vio:3.0\
 "
 
@@ -200,7 +199,7 @@ proc create_root_design { parentCell } {
   # Create ports
 
   # Create instance: amba_ahb_0, and set properties
-  set amba_ahb_0 [ create_bd_cell -type ip -vlnv user.org:user:amba_ahb:5.0 amba_ahb_0 ]
+  set amba_ahb_0 [ create_bd_cell -type ip -vlnv user.org:user:amba_ahb:6.0 amba_ahb_0 ]
 
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
@@ -211,8 +210,8 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_ACT_ENET0_PERIPHERAL_FREQMHZ {125.000000} \
    CONFIG.PCW_ACT_ENET1_PERIPHERAL_FREQMHZ {10.000000} \
    CONFIG.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ {10.000000} \
-   CONFIG.PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ {50.000000} \
-   CONFIG.PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ {5.000000} \
+   CONFIG.PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ {20.000000} \
+   CONFIG.PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ {10.000000} \
    CONFIG.PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ {10.000000} \
    CONFIG.PCW_ACT_PCAP_PERIPHERAL_FREQMHZ {200.000000} \
    CONFIG.PCW_ACT_QSPI_PERIPHERAL_FREQMHZ {200.000000} \
@@ -234,8 +233,8 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_CAN_PERIPHERAL_DIVISOR1 {1} \
    CONFIG.PCW_CAN_PERIPHERAL_FREQMHZ {100} \
    CONFIG.PCW_CLK0_FREQ {10000000} \
-   CONFIG.PCW_CLK1_FREQ {50000000} \
-   CONFIG.PCW_CLK2_FREQ {5000000} \
+   CONFIG.PCW_CLK1_FREQ {20000000} \
+   CONFIG.PCW_CLK2_FREQ {10000000} \
    CONFIG.PCW_CLK3_FREQ {10000000} \
    CONFIG.PCW_CPU_CPU_PLL_FREQMHZ {1333.333} \
    CONFIG.PCW_CPU_PERIPHERAL_DIVISOR0 {2} \
@@ -259,33 +258,34 @@ proc create_root_design { parentCell } {
    CONFIG.PCW_ENET_RESET_ENABLE {1} \
    CONFIG.PCW_ENET_RESET_SELECT {Share reset pin} \
    CONFIG.PCW_EN_CLK1_PORT {1} \
-   CONFIG.PCW_EN_CLK2_PORT {1} \
+   CONFIG.PCW_EN_CLK2_PORT {0} \
    CONFIG.PCW_EN_EMIO_TTC0 {1} \
    CONFIG.PCW_EN_ENET0 {1} \
    CONFIG.PCW_EN_GPIO {1} \
    CONFIG.PCW_EN_QSPI {1} \
+   CONFIG.PCW_EN_RST0_PORT {1} \
    CONFIG.PCW_EN_RST1_PORT {0} \
-   CONFIG.PCW_EN_RST2_PORT {1} \
+   CONFIG.PCW_EN_RST2_PORT {0} \
    CONFIG.PCW_EN_SDIO0 {1} \
    CONFIG.PCW_EN_TTC0 {1} \
    CONFIG.PCW_EN_UART1 {1} \
    CONFIG.PCW_EN_USB0 {1} \
    CONFIG.PCW_FCLK0_PERIPHERAL_DIVISOR0 {10} \
    CONFIG.PCW_FCLK0_PERIPHERAL_DIVISOR1 {10} \
-   CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR0 {5} \
-   CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR1 {4} \
-   CONFIG.PCW_FCLK2_PERIPHERAL_DIVISOR0 {20} \
-   CONFIG.PCW_FCLK2_PERIPHERAL_DIVISOR1 {10} \
+   CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR0 {10} \
+   CONFIG.PCW_FCLK1_PERIPHERAL_DIVISOR1 {5} \
+   CONFIG.PCW_FCLK2_PERIPHERAL_DIVISOR0 {1} \
+   CONFIG.PCW_FCLK2_PERIPHERAL_DIVISOR1 {1} \
    CONFIG.PCW_FCLK3_PERIPHERAL_DIVISOR0 {1} \
    CONFIG.PCW_FCLK3_PERIPHERAL_DIVISOR1 {1} \
    CONFIG.PCW_FCLK_CLK1_BUF {TRUE} \
-   CONFIG.PCW_FCLK_CLK2_BUF {TRUE} \
+   CONFIG.PCW_FCLK_CLK2_BUF {FALSE} \
    CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {10} \
-   CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {50} \
+   CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {20} \
    CONFIG.PCW_FPGA2_PERIPHERAL_FREQMHZ {5} \
    CONFIG.PCW_FPGA_FCLK0_ENABLE {1} \
    CONFIG.PCW_FPGA_FCLK1_ENABLE {1} \
-   CONFIG.PCW_FPGA_FCLK2_ENABLE {1} \
+   CONFIG.PCW_FPGA_FCLK2_ENABLE {0} \
    CONFIG.PCW_FPGA_FCLK3_ENABLE {0} \
    CONFIG.PCW_GPIO_MIO_GPIO_ENABLE {1} \
    CONFIG.PCW_GPIO_MIO_GPIO_IO {MIO} \
@@ -609,40 +609,13 @@ proc create_root_design { parentCell } {
    CONFIG.NUM_MI {1} \
  ] $ps7_0_axi_periph
 
-  # Create instance: rst_ps7_0_100M, and set properties
-  set rst_ps7_0_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M ]
-
-  # Create instance: rst_ps7_0_100M1, and set properties
-  set rst_ps7_0_100M1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M1 ]
-
-  # Create instance: system_ila_0, and set properties
-  set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
-  set_property -dict [ list \
-   CONFIG.C_MON_TYPE {NATIVE} \
-   CONFIG.C_NUM_OF_PROBES {1} \
-   CONFIG.C_PROBE0_TYPE {0} \
- ] $system_ila_0
-
-  # Create instance: system_ila_1, and set properties
-  set system_ila_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_1 ]
-  set_property -dict [ list \
-   CONFIG.C_MON_TYPE {NATIVE} \
-   CONFIG.C_NUM_OF_PROBES {1} \
-   CONFIG.C_PROBE0_TYPE {0} \
- ] $system_ila_1
-
-  # Create instance: system_ila_2, and set properties
-  set system_ila_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_2 ]
-  set_property -dict [ list \
-   CONFIG.C_MON_TYPE {NATIVE} \
-   CONFIG.C_NUM_OF_PROBES {1} \
-   CONFIG.C_PROBE0_TYPE {0} \
- ] $system_ila_2
+  # Create instance: rst_ps7_0_10M, and set properties
+  set rst_ps7_0_10M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_10M ]
 
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {4} \
+   CONFIG.C_NUM_PROBE_IN {22} \
    CONFIG.C_NUM_PROBE_OUT {0} \
  ] $vio_0
 
@@ -653,20 +626,32 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins amba_ahb_0/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
 
   # Create port connections
-  connect_bd_net -net amba_ahb_0_dout1 [get_bd_pins amba_ahb_0/dout1] [get_bd_pins system_ila_0/probe0] [get_bd_pins vio_0/probe_in0]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets amba_ahb_0_dout1]
-  connect_bd_net -net amba_ahb_0_dout2 [get_bd_pins amba_ahb_0/dout2] [get_bd_pins system_ila_1/probe0] [get_bd_pins vio_0/probe_in1]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets amba_ahb_0_dout2]
-  connect_bd_net -net amba_ahb_0_dout3 [get_bd_pins amba_ahb_0/dout3] [get_bd_pins system_ila_2/probe0] [get_bd_pins vio_0/probe_in2]
-  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets amba_ahb_0_dout3]
+  connect_bd_net -net amba_ahb_0_d_master1_addr [get_bd_pins amba_ahb_0/d_master1_addr] [get_bd_pins vio_0/probe_in4]
+  connect_bd_net -net amba_ahb_0_d_master1_sel [get_bd_pins amba_ahb_0/d_master1_sel] [get_bd_pins vio_0/probe_in10]
+  connect_bd_net -net amba_ahb_0_d_master1_sel_o [get_bd_pins amba_ahb_0/d_master1_sel_o] [get_bd_pins vio_0/probe_in13]
+  connect_bd_net -net amba_ahb_0_d_master1_wdata [get_bd_pins amba_ahb_0/d_master1_wdata] [get_bd_pins vio_0/probe_in7]
+  connect_bd_net -net amba_ahb_0_d_master2_addr [get_bd_pins amba_ahb_0/d_master2_addr] [get_bd_pins vio_0/probe_in5]
+  connect_bd_net -net amba_ahb_0_d_master2_sel [get_bd_pins amba_ahb_0/d_master2_sel] [get_bd_pins vio_0/probe_in11]
+  connect_bd_net -net amba_ahb_0_d_master2_sel_o [get_bd_pins amba_ahb_0/d_master2_sel_o] [get_bd_pins vio_0/probe_in14]
+  connect_bd_net -net amba_ahb_0_d_master2_wdata [get_bd_pins amba_ahb_0/d_master2_wdata] [get_bd_pins vio_0/probe_in8]
+  connect_bd_net -net amba_ahb_0_d_master3_addr [get_bd_pins amba_ahb_0/d_master3_addr] [get_bd_pins vio_0/probe_in6]
+  connect_bd_net -net amba_ahb_0_d_master3_sel [get_bd_pins amba_ahb_0/d_master3_sel] [get_bd_pins vio_0/probe_in12]
+  connect_bd_net -net amba_ahb_0_d_master3_sel_o [get_bd_pins amba_ahb_0/d_master3_sel_o] [get_bd_pins vio_0/probe_in15]
+  connect_bd_net -net amba_ahb_0_d_master3_wdata [get_bd_pins amba_ahb_0/d_master3_wdata] [get_bd_pins vio_0/probe_in9]
+  connect_bd_net -net amba_ahb_0_d_slave1_hdata [get_bd_pins amba_ahb_0/d_slave1_hdata] [get_bd_pins vio_0/probe_in16]
+  connect_bd_net -net amba_ahb_0_d_slave1_sel [get_bd_pins amba_ahb_0/d_slave1_sel] [get_bd_pins vio_0/probe_in19]
+  connect_bd_net -net amba_ahb_0_d_slave2_hdata [get_bd_pins amba_ahb_0/d_slave2_hdata] [get_bd_pins vio_0/probe_in17]
+  connect_bd_net -net amba_ahb_0_d_slave2_sel [get_bd_pins amba_ahb_0/d_slave2_sel] [get_bd_pins vio_0/probe_in20]
+  connect_bd_net -net amba_ahb_0_d_slave3_hdata [get_bd_pins amba_ahb_0/d_slave3_hdata] [get_bd_pins vio_0/probe_in18]
+  connect_bd_net -net amba_ahb_0_d_slave3_sel [get_bd_pins amba_ahb_0/d_slave3_sel] [get_bd_pins vio_0/probe_in21]
+  connect_bd_net -net amba_ahb_0_dout1 [get_bd_pins amba_ahb_0/dout1] [get_bd_pins vio_0/probe_in0]
+  connect_bd_net -net amba_ahb_0_dout2 [get_bd_pins amba_ahb_0/dout2] [get_bd_pins vio_0/probe_in1]
+  connect_bd_net -net amba_ahb_0_dout3 [get_bd_pins amba_ahb_0/dout3] [get_bd_pins vio_0/probe_in2]
   connect_bd_net -net amba_ahb_0_hrdata_debug [get_bd_pins amba_ahb_0/hrdata_debug] [get_bd_pins vio_0/probe_in3]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins amba_ahb_0/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
-  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins system_ila_0/clk] [get_bd_pins system_ila_1/clk] [get_bd_pins system_ila_2/clk] [get_bd_pins vio_0/clk]
-  connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins amba_ahb_0/clk] [get_bd_pins processing_system7_0/FCLK_CLK2] [get_bd_pins rst_ps7_0_100M1/slowest_sync_clk]
-  connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
-  connect_bd_net -net processing_system7_0_FCLK_RESET2_N [get_bd_pins processing_system7_0/FCLK_RESET2_N] [get_bd_pins rst_ps7_0_100M1/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_100M1_peripheral_aresetn [get_bd_pins amba_ahb_0/resetn] [get_bd_pins rst_ps7_0_100M1/peripheral_aresetn]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins amba_ahb_0/s_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins amba_ahb_0/clk] [get_bd_pins amba_ahb_0/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_10M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins vio_0/clk]
+  connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_10M/ext_reset_in]
+  connect_bd_net -net rst_ps7_0_10M_peripheral_aresetn [get_bd_pins amba_ahb_0/resetn] [get_bd_pins amba_ahb_0/s_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_10M/peripheral_aresetn]
 
   # Create address segments
   create_bd_addr_seg -range 0x00010000 -offset 0x43C00000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs amba_ahb_0/S_AXI/S_AXI_reg] SEG_amba_ahb_0_S_AXI_reg
